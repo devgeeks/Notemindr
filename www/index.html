@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <link rel="stylesheet" type="text/css" href="components/offline/themes/offline-theme-default.css" />
+        <link rel="stylesheet" type="text/css" href="components/offline/themes/offline-language-english.css" />
+        <link rel="stylesheet" type="text/css" href="components/ionicons/css/ionicons.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Notemindr</title>
+    </head>
+    <body>
+      <div class="app">
+        <div class="page">
+          <div class="nav">
+            <div class="button left">
+              <a href="#" class="ion-navicon"></a>
+            </div>
+            <h1>
+              <a href="#">Notes <i class="ion-arrow-down-b"></i></a> <small>Notemindr</small> 
+            </h1>
+            <div class="button right">
+              <a href="#" class="ion-search"></a>
+            </div>
+          </div>
+          <div class="content">
+            <div id="container"></div>
+          </div>
+          <div class="button fab"><a href="#" class="ion-plus"></a></div>
+        </div>
+      </div>
+      <script type="text/javascript" src="components/jquery/jquery.js"></script>
+      <!-- Components -->
+      <script type="text/javascript" src="components/jquery.transit/jquery.transit.js"></script>
+      <script type="text/javascript" src="components/underscore/underscore.js"></script>
+      <script type="text/javascript" src="components/backbone/backbone.js"></script>
+      <script type="text/javascript" src="components/backstack/backstack.js"></script>
+      <script type="text/javascript" src="components/moment/moment.js"></script>
+      <script type="text/javascript" src="components/masonry/masonry.pkgd.js"></script>
+      <script type="text/javascript" src="components/semver/semver.browser.js"></script>
+      <script type="text/javascript" src="components/fastclick/fastclick.js"></script>
+      <script type="text/javascript" src="components/offline/offline.min.js"></script>
+      <script type="text/javascript" src="js/backbone.crypton.js"></script>
+      <script type="text/javascript" src="js/crypton.js"></script>
+      <script type="text/javascript" src="js/notemindr.js"></script>
+      <script type="text/javascript" src="js/notemindr-templates.js"></script>
+      <script type="text/javascript">
+        var $container = $('#container').masonry({
+          itemSelector: '.item',
+          columnWidth: 1,
+          visibleStyle: { opacity: 1, transform: 'translate3d(0,0,0)' },
+          hiddenStyle: { opacity: 0, transform: 'translate3d(0,100px,0)' }
+        });
+
+        function addelements(num) {
+          for (var i = 0; i < num; i++) {
+            window.setTimeout(function() {
+              var elem = document.createElement('div');
+              elem.className = 'item';
+              elem.innerHTML = 'Note title'; 
+              if (Math.ceil(Math.random() * 10) > 5) {
+                elem.className = elem.className + ' h2';
+              }
+              if (i > 2 && Math.ceil(Math.random() * 10) > 9) {
+                elem.className = elem.className + ' w2 h4';
+              }
+              $container.append(elem)
+                .masonry('appended', elem);
+              }, 100 * (i + 1));
+          }
+        }
+        addelements(Math.ceil(Math.random() * 10));
+      </script>
+    </body>
+</html>

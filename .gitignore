@@ -1,0 +1,4 @@
+platforms/*
+plugins/*
+bower_components/*
+www/js/notemindr*.js
