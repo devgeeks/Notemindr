@@ -1,6 +1,7 @@
 (function(window, $) {
   "use strict";
 
+  window.FastClick.attach(document.body);
   window.crypton.host = 'encryptr.org';
   window.crypton.port = '443';
   window.Offline.options = {
@@ -37,5 +38,12 @@
     window.setTimeout(function() {
       $('.fab').transition({'bottom':'15px'});
     }, 2300);
+  });
+  // @TODO make this more generic
+  $('a').on('touchstart', function(e) {
+    $(this).closest('.button').addClass('active');
+  });
+  $('a').on('touchend', function(e) {
+    $(this).closest('.button').removeClass('active');
   });
 })(window, window.jQuery);
