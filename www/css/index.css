@@ -189,8 +189,12 @@ h3 {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
   transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in-out;
-  transition-property: transform, box-shadow;
-  -webkit-transition-property: -webkit-transform, box-shadow;
+  transition-property: transform, box-shadow, bottom;
+  -webkit-transition-property: -webkit-transform, box-shadow, bottom;
+}
+
+.fab.offline {
+  bottom: 46px;
 }
 
 .fab.out {

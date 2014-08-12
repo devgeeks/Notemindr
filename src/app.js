@@ -32,11 +32,11 @@
     }
   };
   window.Offline.on('down', function() {
-    $('.fab').transition({'bottom':'45px'});
+    $('.fab').addClass('offline');
   });
   window.Offline.on('up', function() {
     window.setTimeout(function() {
-      $('.fab').transition({'bottom':'15px'});
+      $('.fab').removeClass('offline');
     }, 2300);
   });
   // @TODO make this more generic
