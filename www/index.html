@@ -19,7 +19,7 @@
               <a href="#" class="ion-navicon"></a>
             </div>
             <h1>
-              <a href="#">Notes <i class="ion-arrow-down-b"></i></a> <small>Notemindr</small> 
+              <a href="#">Notes <i class="ion-arrow-down-b"></i></a> <small>Notemindr</small>
             </h1>
             <div class="button right">
               <a href="#" class="ion-search"></a>
@@ -43,37 +43,7 @@
       <script type="text/javascript" src="js/backbone.crypton.js"></script>
       <script type="text/javascript" src="js/crypton.js"></script>
       <script type="text/javascript" src="js/notemindr.js"></script>
-      <script type="text/javascript" src="js/notemindr-templates.js"></script>
+      <script type="text/javascript" src="js/notemindr-components.js"></script>
       <script type="text/javascript" src="js/cordova.js"></script>
-      <script type="text/javascript">
-        // @TODO This doesn't belong in the real app
-        window.setTimeout(function() {
-          var $container = $('#container').masonry({
-            itemSelector: '.item',
-            columnWidth: 1,
-            visibleStyle: { opacity: 1, transform: 'translate3d(0,0,0)' },
-            hiddenStyle: { opacity: 0, transform: 'translate3d(0,100px,0)' }
-          });
-
-          function addelements(num) {
-            for (var i = 0; i < num; i++) {
-              window.setTimeout(function() {
-                var elem = document.createElement('div');
-                elem.className = 'item';
-                elem.innerHTML = 'Note title';
-                if (Math.ceil(Math.random() * 10) > 5) {
-                  elem.className = elem.className + ' h2';
-                }
-                if (i > 2 && Math.ceil(Math.random() * 10) > 9) {
-                  elem.className = elem.className + ' w2 h4';
-                }
-                $container.append(elem)
-                  .masonry('appended', elem);
-                }, 100 * (i + 1));
-            }
-          }
-          addelements(Math.ceil(Math.random() * 10));
-        }, 2000);
-      </script>
     </body>
 </html>

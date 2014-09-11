@@ -19,7 +19,6 @@
     "jquery": "~2.1.1",
     "fastclick": "~1.0.3",
     "masonry": "~3.1.5",
-    "backbone": "~1.1.2",
     "offline": "~0.7.10",
     "moment": "~2.8.1",
     "ionicons": "~1.5.2"

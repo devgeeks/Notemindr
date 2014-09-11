@@ -1,4 +1,5 @@
-/*global module:false*/
+/* jshint white: false, quotmark: false, indent: 2 */
+/* global module:false, require */
 module.exports = function(grunt) {
   "use strict";
   // Project configuration.
@@ -12,6 +13,16 @@ module.exports = function(grunt) {
         ' * License: <%= _.pluck(pkg.licenses, "type").join(", ") %> (<%= _.pluck(pkg.licenses, "url").join(", ") %>)' + '\n' +
         ' */\n\n'
     },
+    browserify: {
+      options: {
+        paths: './react_components/',
+        transform: [ require('grunt-react').browserify ]
+      },
+      client: {
+        src: ['react_components/**/*.jsx'],
+        dest: 'www/js/<%= pkg.name %>-components.js'
+      }
+    },
     copy: {
       main: {
         files: [
@@ -22,8 +33,6 @@ module.exports = function(grunt) {
           {expand: true, flatten: true, src: ['bower_components/moment/moment.js'], dest: 'www/components/moment/'},
           {expand: true, flatten: true, src: ['node_modules/semver/semver.browser.js'], dest: 'www/components/semver'},
           {expand: true, flatten: true, src: ['bower_components/underscore/underscore*.js'], dest: 'www/components/underscore/'},
-          {expand: true, flatten: true, src: ['bower_components/backstack/backstack*.js'], dest: 'www/components/backstack/'},
-          {expand: true, flatten: true, src: ['bower_components/backbone/backbone*.js'], dest: 'www/components/backbone/'},
           {expand: true, flatten: true, src: ['bower_components/masonry/dist/masonry*.js'], dest: 'www/components/masonry/'},
           {expand: true, flatten: true, src: ['bower_components/offline/themes/offline-theme-default.css'], dest: 'www/components/offline/themes/'},
           {expand: true, flatten: true, src: ['bower_components/offline/themes/offline-language-english.css'], dest: 'www/components/offline/themes/'},
@@ -34,7 +43,9 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        banner:  '<%= meta.banner %>' + '// GENERATED FILE - DO NOT EDIT\n'
+        banner: '<%= meta.banner %>' + '// GENERATED FILE - DO NOT EDIT\n' +
+                '(function(window, notemindr, undefined) {\n  "use strict";\n',
+        footer: '\n})(window, window.notemindr = window.notemindr || {});'
       },
       dist: {
         src: ['src/**/*.js'],
@@ -47,36 +58,30 @@ module.exports = function(grunt) {
           '<%= concat.dist.dest %>'
         ],
         dest: 'www/js/<%= pkg.name %>.min.js'
-      }
-    },
-    dot: {
-      dist: {
-        options: {
-          variable  : 'tmpl',
-          requirejs : false
-        },
-        src  : ['tpl/**/*.html'],
-        dest : 'www/js/<%= pkg.name %>-templates.js'
+      },
+      browserify: {
+        src: ['www/js/<%= pkg.name %>-components.js'],
+        dest: 'www/js/<%= pkg.name %>-components.min.js'
       }
     },
     watch: {
       files: [
         '<%= jshint.files %>'
       ],
-      tasks: ['jshint', 'concat', 'min']
+      tasks: ['jshint', 'concat', 'copy', 'browserify', 'min']
     },
     shell: {
       _options: {
         failOnError: true,
         stdout: true
       },
-      debug_ios: {
+      debugios: {
         command: 'cordova build ios && cordova emulate ios'
       },
-      debug_android: {
+      debugandroid: {
         command: 'cordova build android && cordova emulate android'
       },
-      debug_blackberry10: {
+      debugblackberry10: {
         command: 'cordova build blackberry10 && cordova emulate blackberry10'
       }
     },
@@ -108,18 +113,18 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-dot-compiler');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-browserify');
 
 
   // Custom tasks
   grunt.registerTask('min', ['uglify']); // polyfil for uglify
   grunt.registerTask('debug','Create a debug build', function(platform) {
-    grunt.task.run('jshint','concat','copy','dot','min');
-    grunt.task.run('shell:debug_' + platform);
+    grunt.task.run('jshint','concat','copy','browserify','min');
+    grunt.task.run('shell:debug' + platform);
   });
 
   // Default task
-  grunt.registerTask('default', ['jshint','concat','copy','dot','min']);
+  grunt.registerTask('default', ['jshint','concat','copy','browserify','min']);
 
 };

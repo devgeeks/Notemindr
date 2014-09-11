@@ -1,13 +1,16 @@
 * {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -moz-tap-highlight-color: rgba(0,0,0,0);
   tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
   -webkit-touch-callout: none;
+  -moz-touch-callout: none;
   touch-callout: none;
   -webkit-text-size-adjust: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
   background-color: #fff;
   background-attachment: fixed;
@@ -163,6 +166,8 @@ h3 {
   margin: 5px 2%;
   background-color: #fff;
   color: #333;
+  transition: left 0.2s ease-out, right 0.2s ease-out;
+  -webkit-transition: left 0.2s ease-out, right 0.2s ease-out;
 }
 
 .item.w2 { width: 96%; }
@@ -187,6 +192,7 @@ h3 {
   font-size: 130%;
   /* z level 2 */
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+  z-index: 10;
   transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in-out;
   transition-property: transform, box-shadow, bottom;
@@ -259,3 +265,35 @@ h3 {
   font-weight: 300;
 }
 
+.addnote-enter {
+  transform: translate(0,100px);
+  -webkit-transform: translate(0,100px);
+  opacity: 0.01;
+  transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out;
+  -webkit-transition: opacity 0.4s ease-out 0.2s, -webkit-transform 0.4s ease-out;
+  -moz-transition: opacity 0.4s ease-out 0.2s, -moz-transform 0.4s ease-out;
+}
+
+.addnote-enter.addnote-enter-active {
+  transform: translate(0,0);
+  -webkit-transform: translate(0,0);
+  -moz-transform: translate(0,0);
+  opacity: 1;
+}
+
+.addnote-leave {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  opacity: 1;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out, -webkit-transform 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out, -moz-transform 0.2s ease-out;
+}
+
+.addnote-leave.addnote-leave-active {
+  transform: scale(0.01);
+  -webkit-transform: scale(0.01);
+  -moz-transform: scale(0.01);
+  opacity: 0.01;
+}

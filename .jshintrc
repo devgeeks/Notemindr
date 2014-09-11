@@ -1,0 +1,25 @@
+{
+  "eqeqeq": false,
+  "laxbreak": true,
+  "undef": true,
+  "newcap": true,
+  "noarg": true,
+  "strict": false,
+  "trailing": false,
+  "onecase": true,
+  "boss": true,
+  "eqnull": true,
+  "expr": true,
+  "onevar": false,
+  "evil": true,
+  "regexdash": true,
+  "browser": true,
+  "wsh": true,
+  "white": false,
+  "sub": true,
+  "globals": {
+    "cordova": true,
+    "require": true,
+    "module": true
+  }
+}
