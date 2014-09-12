@@ -27,9 +27,11 @@ var NotesView = React.createClass({
   componentDidUpdate: function() {
     // Start fresh
     window.clearInterval(this.layoutInterval);
+    // Then every 200 ms (for about 1400 ms) re-layout the items in case they
+    //   were still animating
     var i = 0;
     this.layoutInterval = window.setInterval(function() {
-      if (i >= 7) {
+      if (i === 8) {
         window.clearInterval(this.layoutInterval);
         return;
       }

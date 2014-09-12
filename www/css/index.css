@@ -85,16 +85,23 @@ body {
 
 .nav .button {
   position: absolute;
-  width: 72px;
-  height: 56px;
-  line-height: 56px;
-  font-size: 200%;
-  color: #ffe0b2;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 140%;
+  color: rgba(255,255,255,0.6);
   font-weight:100;
+  border-radius: 40px;
+  text-align: center;
+  margin: 8px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0);
+  transition: background-color 0.2s ease-out;
 }
 
-.nav .button a {
-  padding: 0 0 0 16px;
+.nav .button:active, .nav .button.active {
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: none;
 }
 
 .nav .button.left {
@@ -103,12 +110,6 @@ body {
 
 .nav .button.right {
   right: 0;
-  text-align: right;
-  font-size: 150%;
-}
-
-.nav .button.right a {
-  padding: 0 16px 0 0;
 }
 
 .button a {
@@ -166,8 +167,8 @@ h3 {
   margin: 5px 2%;
   background-color: #fff;
   color: #333;
-  transition: left 0.2s ease-out, right 0.2s ease-out;
-  -webkit-transition: left 0.2s ease-out, right 0.2s ease-out;
+  transition: left 0.1s ease-out, right 0.1s ease-out;
+  -webkit-transition: left 0.1s ease-out, right 0.1s ease-out;
 }
 
 .item.w2 { width: 96%; }
@@ -230,7 +231,7 @@ h3 {
   line-height: 30px !important;
 }
 
-.spinner {
+/*.spinner {
   width: 100px;
   height: 100px;
   position: relative;
@@ -247,7 +248,6 @@ h3 {
   display: inline-block;
   -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
   animation: bouncedelay 1.4s infinite ease-in-out;
-  /* Prevent first frame from flickering when animation starts */
 }
 
 .spinner > div ::-webkit-input-placeholder {
@@ -263,15 +263,134 @@ h3 {
   border-top: 1px solid #e4e4e4;
   color: #aaaaaa;
   font-weight: 300;
+}*/
+
+.spinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+  animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: rgba(255,255,255,0.8);
+  }
+
+  25% {
+    stroke: rgba(255,255,255,0.5);
+  }
+
+  50% {
+    stroke: rgba(255,255,255,0.2);
+  }
+
+  75% {
+    stroke: rgba(255,255,255,0.5);
+  }
+
+  100% {
+    stroke: rgba(255,255,255,0.8);
+  }
+}
+
+@keyframes colors {
+  0% {
+    stroke: rgba(255,255,255,0.8);
+  }
+
+  25% {
+    stroke: rgba(255,255,255,0.5);
+  }
+
+  50% {
+    stroke: rgba(255,255,255,0.2);
+  }
+
+  75% {
+    stroke: rgba(255,255,255,0.5);
+  }
+
+  100% {
+    stroke: rgba(255,255,255,0.8);
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
 }
 
 .addnote-enter {
   transform: translate(0,100px);
   -webkit-transform: translate(0,100px);
   opacity: 0.01;
-  transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out;
-  -webkit-transition: opacity 0.4s ease-out 0.2s, -webkit-transform 0.4s ease-out;
-  -moz-transition: opacity 0.4s ease-out 0.2s, -moz-transform 0.4s ease-out;
+  transition: opacity 0.2s ease-out 0.1s, transform 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out 0.1s, -webkit-transform 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out 0.1s, -moz-transform 0.2s ease-out;
 }
 
 .addnote-enter.addnote-enter-active {

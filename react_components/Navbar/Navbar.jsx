@@ -28,9 +28,7 @@ var Navbar = React.createClass({
         <NavbarButton clickHandler={this.menuClickHandler} pull='left'
           icon='ion-navicon' />
         <h1>
-          <a href='#'>{this.state.title}
-            <i className='ion-arrow-down-b'></i>
-          </a>
+          <a href='#'>{this.state.title} <i className='ion-arrow-down-b'></i></a>
           <small>{this.state.subTitle}</small>
         </h1>
         <NavbarButton clickHandler={this.searchClickHandler} pull='right'
