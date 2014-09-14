@@ -2,15 +2,23 @@
 
   .button {
     position: absolute;
-    width: 72px;
-    height: 56px;
-    line-height: 56px;
-    font-size: 200%;
-    color: #ffe0b2;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 140%;
+    color: rgba(255,255,255,0.6);
     font-weight:100;
+    border-radius: 40px;
+    text-align: center;
+    margin: 8px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0);
+    transition: background-color 0.1s ease-out;
 
-    a {
-      padding: 0 0 0 16px;
+    &::active,
+    &.active {
+      background-color: rgba(255,255,255,0.2);
+      box-shadow: none;
     }
 
     &.left {
@@ -19,12 +27,6 @@
 
     &.right {
       right: 0;
-      text-align: right;
-      font-size: 150%;
-
-      a {
-        padding: 0 16px 0 0;
-      }
     }
   }
 }
