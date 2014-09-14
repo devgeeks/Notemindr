@@ -1,4 +1,3 @@
-/* jshint white: false, quotmark: false, indent: 2 */
 /* global module:false, require */
 module.exports = function(grunt) {
   "use strict";
@@ -9,8 +8,10 @@ module.exports = function(grunt) {
       banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %>' + '\n' +
         '<%= pkg.homepage ? "* " + pkg.homepage : "" %>' + '\n' +
-        ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;' + '\n' +
-        ' * License: <%= _.pluck(pkg.licenses, "type").join(", ") %> (<%= _.pluck(pkg.licenses, "url").join(", ") %>)' + '\n' +
+        ' * Copyright (c) <%= grunt.template.today("yyyy") %> ' +
+        '<%= pkg.author %>;' + '\n' +
+        ' * License: <%= _.pluck(pkg.licenses, "type").join(", ") %> ' +
+        '(<%= _.pluck(pkg.licenses, "url").join(", ") %>)' + '\n' +
         ' */\n\n'
     },
     browserify: {
@@ -26,18 +27,33 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          {expand: true, flatten: true, src: ['bower_components/ionicons/css/*'], dest: 'www/components/ionicons/css/'},
-          {expand: true, flatten: true, src: ['bower_components/ionicons/fonts/*'], dest: 'www/components/ionicons/fonts/'},
-          {expand: true, flatten: true, src: ['bower_components/jquery/dist/jquery.js'], dest: 'www/components/jquery/'},
-          {expand: true, flatten: true, src: ['bower_components/jquery.transit/jquery.transit.js'], dest: 'www/components/jquery.transit/'},
-          {expand: true, flatten: true, src: ['bower_components/moment/moment.js'], dest: 'www/components/moment/'},
-          {expand: true, flatten: true, src: ['node_modules/semver/semver.browser.js'], dest: 'www/components/semver'},
-          {expand: true, flatten: true, src: ['bower_components/underscore/underscore*.js'], dest: 'www/components/underscore/'},
-          {expand: true, flatten: true, src: ['bower_components/masonry/dist/masonry*.js'], dest: 'www/components/masonry/'},
-          {expand: true, flatten: true, src: ['bower_components/offline/themes/offline-theme-default.css'], dest: 'www/components/offline/themes/'},
-          {expand: true, flatten: true, src: ['bower_components/offline/themes/offline-language-english.css'], dest: 'www/components/offline/themes/'},
-          {expand: true, flatten: true, src: ['bower_components/offline/offline.min.js'], dest: 'www/components/offline/'},
-          {expand: true, flatten: true, src: ['bower_components/fastclick/lib/fastclick.js'], dest: 'www/components/fastclick/'}
+          {expand: true, flatten: true,
+            src: ['bower_components/ionicons/css/*'],
+            dest: 'www/components/ionicons/css/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/ionicons/fonts/*'],
+            dest: 'www/components/ionicons/fonts/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/jquery/dist/jquery.js'],
+            dest: 'www/components/jquery/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/moment/moment.js'],
+            dest: 'www/components/moment/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/masonry/dist/masonry*.js'],
+            dest: 'www/components/masonry/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/offline/themes/offline-theme-default.css'],
+            dest: 'www/components/offline/themes/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/offline/themes/offline-language-english.css'],
+            dest: 'www/components/offline/themes/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/offline/offline.min.js'],
+            dest: 'www/components/offline/'},
+          {expand: true, flatten: true,
+            src: ['bower_components/fastclick/lib/fastclick.js'],
+            dest: 'www/components/fastclick/'}
         ]
       }
     },
