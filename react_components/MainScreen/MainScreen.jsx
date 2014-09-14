@@ -77,6 +77,7 @@ var MainScreen = React.createClass({
     var fabNode = this.refs.fab.getDOMNode();
     fabNode.classList.add('out');
     // @TODO - instead of popping back, switch to the add new note form
+    // This is just for the mocked version
     window.setTimeout(function() {
       fabNode.classList.remove('out');
     }, 2000);
