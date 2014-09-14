@@ -1,7 +1,7 @@
 (function(window, $) {
   "use strict";
 
-  window.FastClick.attach(document.body);
+
   window.crypton.host = 'encryptr.org';
   window.crypton.port = '443';
   window.Offline.options = {
