@@ -8,7 +8,7 @@ var LoginScreen = React.createClass({
 
   render: function() {
     return (
-      <div className='LoginScreen page' />
+      <div class="LoginScreen page login" />
     );
   }
 

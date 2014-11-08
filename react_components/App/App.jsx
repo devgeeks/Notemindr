@@ -34,8 +34,10 @@ var App = React.createClass({
 
 });
 
+// @TODO - remove.. this is just for testing
 window.loggedIn = true;
 
+// Here is the router
 var routes = (
   <Routes>
     <Route handler={App}>
@@ -53,6 +55,7 @@ var notemindr = React.renderComponent(
   routes,
   document.body
 );
+// and remove the 300ms delay on 'click'
 window.FastClick.attach(document.body);
 
 module.exports = App;

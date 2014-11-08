@@ -16,7 +16,6 @@ module.exports = function(grunt) {
     },
     browserify: {
       options: {
-        paths: './react_components/',
         transform: [ require('grunt-react').browserify ]
       },
       client: {

@@ -75,7 +75,10 @@ var MainScreen = React.createClass({
   fabClickHandler: function(event) {
     window.console.log('Fabulous!');
     var fabNode = this.refs.fab.getDOMNode();
-    fabNode.classList.add('out');
+    // Let it get clicked first
+    window.setTimeout(function() {
+      fabNode.classList.add('out');
+    }, 200);
     // @TODO - instead of popping back, switch to the add new note form
     // This is just for the mocked version
     window.setTimeout(function() {
