@@ -1,6 +1,4 @@
 platforms/*
 plugins/*
-bower_components/*
-www/components/*
 www/js/notemindr*.js
 node_modules
