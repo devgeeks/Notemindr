@@ -1,0 +1,28 @@
+/* Same animation as Encryptr */
+.app {
+  .positionAbsolute();
+  background-color: @appBackgroundColor;
+  overflow: hidden;
+
+  .page-enter {
+    opacity: 0.01;
+    transform: scale3d(0.9,0.9,0.9);
+    transition: all .3s ease-in;
+  }
+
+  .page-enter.page-enter-active {
+    transform: scale3d(1,1,1);
+    opacity: 1;
+  }
+
+  .page-leave {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+    transition: all .3s ease-in;
+  }
+
+  .page-leave.page-leave-active {
+    transform: scale3d(0.9,0.9,0.9);
+    opacity: 0.01;
+  }
+}

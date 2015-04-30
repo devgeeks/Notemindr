@@ -1,0 +1,17 @@
+// Global variables
+@import "colors.less";
+/* A color of my own based on the above */
+@superDarkPrimaryColor: darken(@darkPrimaryColor, 12%);
+
+// Alpha values for grey text, icons, and dividers
+@black: #000000;
+@white: #FFFFFF;
+@lightGray: fade(@black, 12%); // Dividers
+@solidLightGray: #EEEEEE;
+@mediumGray: fade(@black, 26%); // Disabled / Hint Text
+@darkGray: fade(@black, 54%); // Secondary Text / Icons
+@nearBlack: fade(@black, 82%); // Text
+
+// App variables
+@appBackgroundColor: @white;
+@appTextColor: @nearBlack;

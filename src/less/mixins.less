@@ -1,0 +1,45 @@
+// Global mixins
+.userSelect() {
+  user-select: none;
+}
+
+.positionAbsolute(@top: 0; @right: 0; @bottom: 0; @left: 0;) {
+  position: absolute;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+
+.translate3d(@x: 0; @y: 0; @z: 0;) {
+  transform: translate3d(@x, @y, @z);
+}
+
+.scrollable() {
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.twoStepLinearGradient(@topColor; @bottomColor) {
+  background-image: linear-gradient(top, @topColor 0%, @bottomColor 100%);
+}
+
+.uniformBorderRadius(@radius: 5px) {
+  border-radius: @radius;
+}
+
+.borderRadius(@topLeft: 0; @topRight: 0; @bottomLeft: 0; @bottomRight: 0;) {
+  border-top-left-radius: @topLeft;
+  border-top-right-radius: @topRight;
+  border-bottom-right-radius: @bottomRight;
+  border-bottom-left-radius: @bottomLeft;
+}
+
+.ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

@@ -1,5 +1,4 @@
-# Notemindr
+Notemindr
+--------------
 
-## A note taking app with reminders
-
-This yet another example app using Crypton
+Notes app with reminders

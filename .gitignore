@@ -1,4 +1,7 @@
 platforms/*
 plugins/*
-www/js/notemindr*.js
 node_modules
+www/js/notemindr.js
+www/js/notemindr.min.js
+www/css/index.css
+desktopbuilds/*

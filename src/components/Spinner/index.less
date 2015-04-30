@@ -1,0 +1,88 @@
+.spinnercontainer {
+  opacity: 0;
+  margin: 0 auto;
+  transition: opacity linear 0.3s;
+
+  &.pending {
+    opacity: 1;
+  }
+
+  .spinner {
+    animation: rotator 1.4s linear infinite;
+  }
+
+  @keyframes rotator {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(210deg);
+    }
+  }
+
+  .path {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  }
+
+  &.dark {
+    .path {
+      animation: dash 1.4s ease-in-out infinite, darkColors 5.6s ease-in-out infinite;
+    }
+  }
+
+  @keyframes colors {
+    0% {
+      stroke: @white;
+    }
+
+    25% {
+      stroke: @lightPrimaryColor;
+    }
+
+    50% {
+      stroke: @primaryColor;
+    }
+
+    75% {
+      stroke: @lightPrimaryColor;
+    }
+
+    100% {
+      stroke: @white;
+    }
+  }
+
+  @keyframes darkColors {
+    0% {
+      stroke: @superDarkPrimaryColor;
+    }
+
+    50% {
+      stroke: @darkPrimaryColor;
+    }
+
+    100% {
+      stroke: @superDarkPrimaryColor;
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 187;
+    }
+
+    50% {
+      stroke-dashoffset: 46.75;
+      transform: rotate(135deg);
+    }
+
+    100% {
+      stroke-dashoffset: 187;
+      transform: rotate(450deg);
+    }
+  }
+}

@@ -1,0 +1,126 @@
+.login {
+  .positionAbsolute();
+  z-index: 20;
+  background-color: @primaryColor;
+  color: @textPrimaryColor;
+  transform: translate3d(0,0,0);
+  transition: all .2s ease-in;
+
+  &.pending {
+    background-color: darken(@primaryColor, 10%);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  h2 {
+    color: @textPrimaryColor;
+    text-align: center;
+    margin: 20px 0;
+    letter-spacing: 2px;
+  }
+
+  form {
+    position: relative;
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    min-width: 270px;
+    margin: 0 10%;
+
+    input[type=text],
+    input[type=password] {
+      border-radius: 0;
+      width: 100%;
+      padding: 10px;
+      font-size: 100%;
+      outline: none;
+      border: none;
+      color: @textPrimaryColor;
+      height: 48px;
+      background-color: @primaryColor;
+      border-bottom: 1px solid @dividerColor;
+      transition: all .2s ease-in;
+
+      &.pending {
+        background-color: darken(@primaryColor, 10%);
+      }
+    }
+
+    input[type=submit] {
+      display: none;
+    }
+
+    .buttons {
+      width: 100%;
+      padding: 0;
+      max-width: 400px;
+      margin: 16px 0;
+
+      a {
+
+        &.button {
+          position: relative;
+          border-radius: 2px;
+          color: inherit;
+          text-decoration: none;
+          text-align: center;
+          display: block;
+          margin: 0 0 16px 0;
+          width: 100%;
+          min-width: 88px;
+          height: 38px;
+          line-height: 38px;
+          outline: none;
+          font-size: 100%;
+          padding: 0;
+          transition: all 0.05s ease-in;
+          background-color: @primaryColor;
+          color: @textPrimaryColor;
+          .BoxShadowHelper(1);
+
+          &.colored {
+            display: inline-block;
+            background-color: @darkPrimaryColor;
+            .BoxShadowHelper(1);
+
+            &:active {
+              background-color: lighten(@darkPrimaryColor, 5%);
+              .BoxShadowHelper(2);
+            }
+
+            &.pending {
+              background-color: lighten(@darkPrimaryColor, 10%);
+              color: @lightPrimaryColor;
+            }
+          }
+
+          &:active {
+            background-color: lighten(@primaryColor, 5%);
+            .BoxShadowHelper(2);
+            transform: translate3d(0,-1px,0);
+          }
+
+          &.pending {
+            background-color: lighten(@primaryColor, 10%);
+            color: @lightPrimaryColor;
+          }
+        }
+      }
+    }
+  }
+
+  ::-webkit-input-placeholder {
+    color: @lightPrimaryColor;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px @primaryColor inset;
+    -webkit-text-fill-color: @textPrimaryColor;
+  }
+
+  &.dismissed {
+    transform: translate3d(0,100%,0);
+  }
+}
