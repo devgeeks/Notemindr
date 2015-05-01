@@ -19,11 +19,13 @@ describe('App', function() {
     // Render the component
     app = testContext.getRouterComponent(App);
   });
+
   it('should render', function() {
     expect(app).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(app, App)).toBe(true);
     expect(app.getDOMNode().className).toContain('app');
   });
+
   it('should have three (3) children', function() {
     var children = TestUtils.findRenderedDOMComponentWithClass(app, 'app')
       .props.children;

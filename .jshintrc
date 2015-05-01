@@ -4,6 +4,7 @@
   "undef": true,
   "newcap": true,
   "noarg": true,
+  "node": true,
   "strict": false,
   "trailing": false,
   "onecase": true,
