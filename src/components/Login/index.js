@@ -31,6 +31,7 @@ var Login = React.createClass({
     });
     return (
       <div className={classes}>
+        <div className='blocker' />
         <form className='form' name='login' id='loginform'
             onSubmit={this.props.loginHandler}>
           <h2>{this.props.appName}</h2>

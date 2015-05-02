@@ -6,8 +6,18 @@
   transform: translate3d(0,0,0);
   transition: all .2s ease-in;
 
+  .blocker {
+    .positionAbsolute();
+    display: none;
+    z-index: 21;
+    background-color: rgba(0,0,0,0.2);
+  }
+
   &.pending {
-    background-color: darken(@primaryColor, 10%);
+
+    .blocker {
+      display: block;
+    }
   }
 
   a {
@@ -42,10 +52,6 @@
       background-color: @primaryColor;
       border-bottom: 1px solid @dividerColor;
       transition: all .2s ease-in;
-
-      &.pending {
-        background-color: darken(@primaryColor, 10%);
-      }
     }
 
     input[type=submit] {
@@ -89,22 +95,12 @@
               background-color: lighten(@darkPrimaryColor, 5%);
               .BoxShadowHelper(2);
             }
-
-            &.pending {
-              background-color: lighten(@darkPrimaryColor, 10%);
-              color: @lightPrimaryColor;
-            }
           }
 
           &:active {
             background-color: lighten(@primaryColor, 5%);
             .BoxShadowHelper(2);
             transform: translate3d(0,-1px,0);
-          }
-
-          &.pending {
-            background-color: lighten(@primaryColor, 10%);
-            color: @lightPrimaryColor;
           }
         }
       }

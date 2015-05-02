@@ -39,7 +39,7 @@ var App = React.createClass({
         pending: false,
         dismissed: true
       });
-    }, 1000);
+    }, 2000);
   },
 
   render: function() {

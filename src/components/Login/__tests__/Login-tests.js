@@ -12,7 +12,8 @@ var Spinner = require('../../Spinner');
 describe('Login default', function() {
   var login,
       loginComponent,
-      loginChildren;
+      loginChildren,
+      loginForm;
 
   beforeEach(function() {
     //Render the component
@@ -20,7 +21,8 @@ describe('Login default', function() {
       <Login pending={false} appName='Notemindr' />
     );
     loginComponent = TestUtils.findRenderedDOMComponentWithClass(login, 'login');
-    loginChildren = React.Children.only(loginComponent.props.children);
+    loginChildren = loginComponent.props.children;
+    loginForm = loginChildren[1];
   });
 
   it('should render', function() {
@@ -31,10 +33,14 @@ describe('Login default', function() {
 
   it('should have the correct children', function() {
     expect(loginChildren).toBeDefined();
+    expect(loginChildren.length).toBe(2);
+    expect(loginChildren[0].type).toEqual('div');
+    expect(loginChildren[0]._store.props.className).toEqual('blocker');
+    expect(loginForm.type).toEqual('form');
   });
 
   it('should have the correct grandchildren', function() {
-    var grandChildren = loginChildren.props.children;
+    var grandChildren = loginForm.props.children;
     expect(grandChildren.length).toBe(6);
     expect(grandChildren[0].type).toEqual('h2');
     expect(grandChildren[0]._store.props.children).toEqual(login.props.appName);
@@ -68,7 +74,7 @@ describe('Login default', function() {
   });
 
   it('should have the correct great grandchildren', function() {
-    var grandChildren = loginChildren.props.children;
+    var grandChildren = loginForm._store.props.children;
     var greatGrandChildren = grandChildren[4].props.children;
     expect(greatGrandChildren.length).toBe(2);
     expect(greatGrandChildren[0]._store.props).toEqual({
@@ -85,7 +91,8 @@ describe('Login default', function() {
 describe('Login pending', function() {
   var login,
       loginComponent,
-      loginChildren;
+      loginChildren,
+      loginForm;
 
   beforeEach(function() {
     //Render the component
@@ -93,7 +100,8 @@ describe('Login pending', function() {
       <Login pending={true} appName='Notemindr' />
     );
     loginComponent = TestUtils.findRenderedDOMComponentWithClass(login, 'login');
-    loginChildren = React.Children.only(loginComponent.props.children);
+    loginChildren = loginComponent.props.children;
+    loginForm = loginChildren[1];
   });
 
   it('should render as pending', function() {
@@ -101,13 +109,13 @@ describe('Login pending', function() {
   });
 
   it('should render the inputs as pending', function() {
-    var grandChildren = loginChildren.props.children;
+    var grandChildren = loginForm._store.props.children;
     expect(grandChildren[2]._store.props.className).toContain('pending');
     expect(grandChildren[3]._store.props.className).toContain('pending');
   });
 
   it('should render the buttons as pending', function() {
-    var grandChildren = loginChildren.props.children;
+    var grandChildren = loginForm._store.props.children;
     var greatGrandChildren = grandChildren[4].props.children;
     expect(greatGrandChildren[0]._store.props.className).toContain('pending');
     expect(greatGrandChildren[1]._store.props.className).toContain('pending');
