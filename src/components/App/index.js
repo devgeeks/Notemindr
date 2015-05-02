@@ -30,16 +30,15 @@ var App = React.createClass({
   loginHandler: function(event) {
     event.preventDefault();
     // @TODO - this is just a stub for now...
-    var that = this;
     this.setState({
       pending: true
     });
     setTimeout(function() {
-      that.setState({
+      this.setState({
         pending: false,
         dismissed: true
       });
-    }, 2000);
+    }.bind(this), 2000);
   },
 
   render: function() {
