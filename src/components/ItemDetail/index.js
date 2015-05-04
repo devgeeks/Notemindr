@@ -2,8 +2,8 @@
  * @jsx React.DOM
  */
 
- /* jshint node: true */
- 'use strict';
+/* jshint node: true */
+'use strict';
 
 var React = require('react');
 

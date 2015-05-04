@@ -20,7 +20,7 @@ var routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="item" path="/item/:item" handler={ItemDetail} />
     <Route path='/' handler={ItemList} />
-    <DefaultRoute handler={Login}/>
+    <DefaultRoute handler={ItemList}/>
   </Route>
 );
 

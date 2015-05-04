@@ -2,8 +2,8 @@
  * @jsx React.DOM
  */
 
- /* jshint node: true */
- 'use strict';
+/* jshint node: true */
+'use strict';
 
 var React = require('react');
 
@@ -32,10 +32,10 @@ var Login = React.createClass({
     return (
       <div className={classes}>
         <div className='blocker' />
-        <form className='form' name='login' id='loginform'
+        <form className='form' name='loginform' id='login'
             onSubmit={this.props.loginHandler}>
           <h2>{this.props.appName}</h2>
-          <Spinner dark={true} pending={this.props.pending} />
+          <Spinner dark={false} pending={this.props.pending} />
           <input id='username' className={subClasses} type='text'
               name='username' autoCorrect='off' autoCapitalize='off'
               placeholder='Username' tabIndex='1' />
