@@ -43,8 +43,10 @@ var Login = React.createClass({
               name='passphrase' placeholder='Passphrase' tabIndex='2' />
           <div className='buttons' id='login-buttons'>
             <a className={'button submit colored ' + subClasses}
-                onClick={this.props.loginHandler}>Login</a>
-            <a className={'button create ' + subClasses}>Create Account</a>
+                onClick={this.props.loginHandler} tabIndex='3'>Login</a>
+            <a className={'button create ' + subClasses}
+                onClick={this.props.registerHandler}
+                tabIndex='4'>Create Account</a>
           </div>
           <input type='submit' name='loginsubmit' />
         </form>

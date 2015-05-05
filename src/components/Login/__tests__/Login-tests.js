@@ -79,10 +79,12 @@ describe('Login default', function() {
     expect(greatGrandChildren.length).toBe(2);
     expect(greatGrandChildren[0]._store.props).toEqual({
       className: 'button submit colored loginform',
+      tabIndex: '3',
       children: 'Login'
     });
     expect(greatGrandChildren[1]._store.props).toEqual({
       className: 'button create loginform',
+      tabIndex: '4',
       children: 'Create Account'
     });
   });
