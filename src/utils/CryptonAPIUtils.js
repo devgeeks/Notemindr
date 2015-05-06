@@ -1,5 +1,4 @@
 /* global crypton */
-/* jshint: node: true */
 
 var appConstants = require('../constants/appConstants');
 

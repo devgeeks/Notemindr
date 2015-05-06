@@ -1,8 +1,3 @@
-/**
- * @jsx React.DOM
- */
-
-/* jshint node: true */
 'use strict';
 
 /**

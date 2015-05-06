@@ -1,5 +1,5 @@
-/* jshint node: true */
-/* global jest, beforeEach, describe, it, expect */
+/* eslint-env node, jasmine */
+/* global jest */
 
 jest.dontMock('../index.js');
 jest.dontMock('../../../utils/TestContext');

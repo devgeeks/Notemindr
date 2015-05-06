@@ -1,11 +1,10 @@
-/* jshint node: true */
 'use strict';
 
 var Router = require('react-router'),
-    Route = Router.Route,
     React = require('react/addons'),
-    TestUtils = React.addons.TestUtils,
     TestLocation = require('react-router/modules/locations/TestLocation');
+var TestUtils = React.addons.TestUtils,
+    Route = Router.Route;
 
 var TestContext = {
   getRouterComponent: function(targetComponent) {

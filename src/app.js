@@ -1,8 +1,3 @@
-/**
- * @jsx React.DOM
- */
-/* jshint browser: true */
-
 var React = require('react/addons');
 
 var App = require('./components/App');
