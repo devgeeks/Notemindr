@@ -22,6 +22,8 @@
     "test": "./node_modules/.bin/jest"
   },
   "devDependencies": {
+    "babel-jest": "^5.2.0",
+    "babelify": "^6.0.2",
     "bower": "^1.3.12",
     "browserify": "^7.0.0",
     "cordova": "^4.1.2",
@@ -49,15 +51,19 @@
   },
   "dependencies": {},
   "browserify": {
-    "transform": [
-      "reactify"
-    ]
+    "transform": [["babelify", { "blacklist": ["regenerator"] }]]
   },
   "jest": {
     "testFileExtensions": [
+      "es6",
       "js"
     ],
-    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ],
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/timeout-transition-group",
       "<rootDir>/node_modules/react",
