@@ -5,7 +5,7 @@
  */
 var React = require('react');
 var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
+var {RouteHandler} = Router;
 // Modified version of Khan TimeoutTransitionGroup
 var TimeoutTransitionGroup = require('timeout-transition-group');
 
@@ -28,12 +28,12 @@ var App = React.createClass({
     this.setState({
       pending: true
     });
-    setTimeout(function() {
+    setTimeout(() => {
       this.setState({
         pending: false,
         dismissed: true
       });
-    }.bind(this), 2000);
+    }, 2000);
   },
 
   render: function() {

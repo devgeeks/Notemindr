@@ -5,15 +5,15 @@ jest.dontMock('../index.js');
 
 var React = require('react/addons');
 var Header = require('../index.js');
-var TestUtils = React.addons.TestUtils;
+var {TestUtils} = React.addons;
 
 //Render the component
 var header = TestUtils.renderIntoDocument(
   <Header />
 );
 
-describe('Header', function() {
-  it('should render', function() {
+describe('Header', () => {
+  it('should render', () => {
     var headerElement =
       TestUtils.findRenderedDOMComponentWithClass(header, 'header');
     expect(header).toBeDefined();

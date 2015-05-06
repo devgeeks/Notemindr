@@ -5,15 +5,15 @@ jest.dontMock('../index.js');
 
 var React = require('react/addons');
 var ItemList = require('../index.js');
-var TestUtils = React.addons.TestUtils;
+var {TestUtils} = React.addons;
 
 //Render the component
 var itemList = TestUtils.renderIntoDocument(
   <ItemList />
 );
 
-describe('ItemList', function() {
-  it('renders', function() {
+describe('ItemList', () => {
+  it('renders', () => {
     expect(itemList).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(itemList, ItemList))
       .toBe(true);

@@ -5,13 +5,13 @@ jest.dontMock('../index.js');
 
 var React = require('react/addons');
 var Item = require('../index.js');
-var TestUtils = React.addons.TestUtils;
+var {TestUtils} = React.addons;
 
-describe('Item', function() {
+describe('Item', () => {
   var item,
       itemElement;
 
-  beforeEach(function() {
+  beforeEach(() => {
     //Render the component
     item = TestUtils.renderIntoDocument(
       <Item />
@@ -20,7 +20,7 @@ describe('Item', function() {
       TestUtils.findRenderedDOMComponentWithClass(item, 'item');
   });
 
-  it('should render', function() {
+  it('should render', () => {
     expect(item).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(item, Item)).toBe(true);
     expect(itemElement).toBeDefined();

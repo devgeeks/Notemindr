@@ -5,8 +5,7 @@ var Login = require('./components/Login');
 var ItemList = require('./components/ItemList');
 var ItemDetail = require('./components/ItemDetail');
 var Router = require('react-router');
-var Route = Router.Route,
-    DefaultRoute = Router.DefaultRoute;
+var {Route, DefaultRoute} = Router;
 
 var attachFastClick = require('fastclick');
 attachFastClick(document.body);
@@ -19,6 +18,6 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, function (Handler) {
+Router.run(routes, (Handler) => {
   React.render(<Handler/>, document.getElementById('Notemindr'));
 });

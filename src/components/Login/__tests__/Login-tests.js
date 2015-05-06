@@ -5,17 +5,17 @@ jest.dontMock('../index.js');
 
 var React = require('react/addons');
 var Login = require('../index.js');
-var TestUtils = React.addons.TestUtils;
+var {TestUtils} = React.addons;
 
 var Spinner = require('../../Spinner');
 
-describe('Login default', function() {
+describe('Login default', () => {
   var login,
       loginComponent,
       loginChildren,
       loginForm;
 
-  beforeEach(function() {
+  beforeEach(() => {
     //Render the component
     login = TestUtils.renderIntoDocument(
       <Login pending={false} appName='Notemindr' />
@@ -25,13 +25,13 @@ describe('Login default', function() {
     loginForm = loginChildren[1];
   });
 
-  it('should render', function() {
+  it('should render', () => {
     expect(login).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(login, Login)).toBe(true);
     expect(login.getDOMNode().className).toContain('login');
   });
 
-  it('should have the correct children', function() {
+  it('should have the correct children', () => {
     expect(loginChildren).toBeDefined();
     expect(loginChildren.length).toBe(2);
     expect(loginChildren[0].type).toEqual('div');
@@ -39,7 +39,7 @@ describe('Login default', function() {
     expect(loginForm.type).toEqual('form');
   });
 
-  it('should have the correct grandchildren', function() {
+  it('should have the correct grandchildren', () => {
     var grandChildren = loginForm.props.children;
     expect(grandChildren.length).toBe(6);
     expect(grandChildren[0].type).toEqual('h2');
@@ -73,7 +73,7 @@ describe('Login default', function() {
     expect(grandChildren[5]._store.props.name).toEqual('loginsubmit');
   });
 
-  it('should have the correct great grandchildren', function() {
+  it('should have the correct great grandchildren', () => {
     var grandChildren = loginForm._store.props.children;
     var greatGrandChildren = grandChildren[4].props.children;
     expect(greatGrandChildren.length).toBe(2);
@@ -90,13 +90,13 @@ describe('Login default', function() {
   });
 });
 
-describe('Login pending', function() {
+describe('Login pending', () => {
   var login,
       loginComponent,
       loginChildren,
       loginForm;
 
-  beforeEach(function() {
+  beforeEach(() => {
     //Render the component
     login = TestUtils.renderIntoDocument(
       <Login pending={true} appName='Notemindr' />
@@ -106,17 +106,17 @@ describe('Login pending', function() {
     loginForm = loginChildren[1];
   });
 
-  it('should render as pending', function() {
+  it('should render as pending', () => {
     expect(login.getDOMNode().className).toContain('pending');
   });
 
-  it('should render the inputs as pending', function() {
+  it('should render the inputs as pending', () => {
     var grandChildren = loginForm._store.props.children;
     expect(grandChildren[2]._store.props.className).toContain('pending');
     expect(grandChildren[3]._store.props.className).toContain('pending');
   });
 
-  it('should render the buttons as pending', function() {
+  it('should render the buttons as pending', () => {
     var grandChildren = loginForm._store.props.children;
     var greatGrandChildren = grandChildren[4].props.children;
     expect(greatGrandChildren[0]._store.props.className).toContain('pending');

@@ -5,13 +5,13 @@ jest.dontMock('../index.js');
 
 var React = require('react/addons');
 var Spinner = require('../index.js');
-var TestUtils = React.addons.TestUtils;
+var {TestUtils} = React.addons;
 
-describe('Spinner', function() {
+describe('Spinner', () => {
   var spinner,
       spinnerComponent;
 
-  beforeEach(function() {
+  beforeEach(() => {
     //Render the component
     spinner = TestUtils.renderIntoDocument(
       <Spinner pending={false} />
@@ -20,23 +20,23 @@ describe('Spinner', function() {
         .findRenderedDOMComponentWithClass(spinner, 'spinnercontainer');
   });
 
-  it('should render', function() {
+  it('should render', () => {
     expect(spinner).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(spinner, Spinner))
         .toBe(true);
     expect(spinner.getDOMNode().className).toContain('spinnercontainer');
   });
 
-  it('should be hidden by default', function() {
+  it('should be hidden by default', () => {
     expect(spinner.getDOMNode().className).toNotContain('pending');
   });
 });
 
-describe('Spinner pending', function() {
+describe('Spinner pending', () => {
   var spinner,
       spinnerComponent;
 
-  beforeEach(function() {
+  beforeEach(() => {
     //Render the component
     spinner = TestUtils.renderIntoDocument(
       <Spinner pending={true} />
@@ -45,19 +45,19 @@ describe('Spinner pending', function() {
         .findRenderedDOMComponentWithClass(spinner, 'spinnercontainer');
   });
 
-  it('should be visible when pending', function() {
+  it('should be visible when pending', () => {
     expect(spinner.getDOMNode().className).toContain('pending');
   });
 });
 
-describe('Spinner light', function() {
+describe('Spinner light', () => {
   // ...
 });
 
-describe('Spinner dark', function() {
+describe('Spinner dark', () => {
   // ...
 });
 
-describe('Spinner dimensions', function() {
+describe('Spinner dimensions', () => {
   // ...
 });

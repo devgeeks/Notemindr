@@ -7,17 +7,17 @@ jest.dontMock('../../../utils/TestContext');
 var React = require('react/addons');
 var testContext = require('../../../utils/TestContext');
 var ItemDetail = require('../index.js');
-var TestUtils = React.addons.TestUtils;
+var {TestUtils} = React.addons;
 
-describe('ItemDetail', function() {
+describe('ItemDetail', () => {
   var itemDetail;
 
-  beforeEach(function() {
+  beforeEach(() => {
     // Render the component
     itemDetail = testContext.getRouterComponent(ItemDetail);
   });
 
-  it('should render', function() {
+  it('should render', () => {
     expect(itemDetail).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(itemDetail, ItemDetail))
         .toBe(true);

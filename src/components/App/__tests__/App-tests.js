@@ -6,7 +6,7 @@ jest.dontMock('../index.js');
 
 var testContext = require('../../../utils/TestContext');
 var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+var {TestUtils} = React.addons;
 var App = require('../index.js');
 var Login = require('../../Login');
 var Header = require('../../Header');
@@ -14,19 +14,19 @@ var TimeoutTransitionGroup = require('timeout-transition-group');
 
 var app;
 
-describe('App', function() {
-  beforeEach(function() {
+describe('App', () => {
+  beforeEach(() => {
     // Render the component
     app = testContext.getRouterComponent(App);
   });
 
-  it('should render', function() {
+  it('should render', () => {
     expect(app).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(app, App)).toBe(true);
     expect(app.getDOMNode().className).toContain('app');
   });
 
-  it('should have three (3) children', function() {
+  it('should have three (3) children', () => {
     var children = TestUtils.findRenderedDOMComponentWithClass(app, 'app')
       .props.children;
     expect(app.getDOMNode().children.length).toBe(3);
