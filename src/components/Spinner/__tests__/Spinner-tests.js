@@ -1,5 +1,6 @@
 /* eslint-env node, jasmine */
 /* global jest */
+'use strict';
 
 jest.dontMock('../index.js');
 
@@ -22,6 +23,7 @@ describe('Spinner', () => {
 
   it('should render', () => {
     expect(spinner).toBeDefined();
+    expect(spinnerComponent).toBeDefined();
     expect(TestUtils.isCompositeComponentWithType(spinner, Spinner))
         .toBe(true);
     expect(spinner.getDOMNode().className).toContain('spinnercontainer');
@@ -47,6 +49,7 @@ describe('Spinner pending', () => {
 
   it('should be visible when pending', () => {
     expect(spinner.getDOMNode().className).toContain('pending');
+    expect(spinnerComponent.getDOMNode().className).toContain('pending');
   });
 });
 

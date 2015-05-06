@@ -1,5 +1,6 @@
 /* eslint-env node, jasmine */
 /* global jest */
+'use strict';
 
 jest.dontMock('../../../utils/TestContext');
 jest.dontMock('../index.js');

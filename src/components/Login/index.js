@@ -8,9 +8,20 @@ var Login = React.createClass({
 
   getDefaultProps: function() {
     return {
+      appName: '',
       dismissed: false,
-      pending: false
+      loginHandler: function(){},
+      pending: false,
+      registerHandler: function(){}
     };
+  },
+
+  propTypes: {
+    appName: React.PropTypes.string,
+    dismissed: React.PropTypes.boolean,
+    loginHandler: React.PropTypes.function,
+    pending: React.PropTypes.boolean,
+    registerHandler: React.PropTypes.function
   },
 
   render: function() {

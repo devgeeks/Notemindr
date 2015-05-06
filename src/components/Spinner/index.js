@@ -8,11 +8,20 @@ var Spinner = React.createClass({
 
   getDefaultProps: function() {
     return {
-      width: '30px',
+      dark: false,
       height: '30px',
       inline: false,
-      dark: false
+      pending: false,
+      width: '30px'
     };
+  },
+
+  propTypes: {
+    dark: React.PropTypes.boolean,
+    height: React.PropTypes.string,
+    inline: React.PropTypes.boolean,
+    pending: React.PropTypes.boolean,
+    width: React.PropTypes.string
   },
 
   render: function() {
