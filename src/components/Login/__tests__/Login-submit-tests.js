@@ -12,30 +12,43 @@ describe('Login submit', () => {
   var login,
       loginForm,
       loginButton,
-      dummyCallback;
+      registerButton,
+      dummyLoginCallback,
+      dummyRegisterCallback;
 
   beforeEach(() => {
     //Render the component
-    dummyCallback = jest.genMockFunction();
+    dummyLoginCallback = jest.genMockFunction();
+    dummyRegisterCallback = jest.genMockFunction();
     login = TestUtils.renderIntoDocument(
-      <Login pending={true} appName='Notemindr' loginHandler={dummyCallback} />
+      <Login pending={true} appName='Notemindr'
+          loginHandler={dummyLoginCallback}
+          registerHandler={dummyRegisterCallback} />
     );
     loginForm = TestUtils.findRenderedDOMComponentWithClass(login, 'form');
     loginButton = TestUtils.findRenderedDOMComponentWithClass(login, 'submit');
+    registerButton = TestUtils.findRenderedDOMComponentWithClass(login, 'create');
   });
 
   it('should call this.props.loginHandler when the form is submitted', () => {
     expect(loginForm).toBeDefined();
     expect(login.props.loginHandler).toBeDefined();
     TestUtils.Simulate.submit(loginForm.getDOMNode());
-    expect(dummyCallback).toBeCalled();
+    expect(dummyLoginCallback).toBeCalled();
   });
 
   it('should call this.props.loginHandler when the login button is clicked', () => {
     expect(loginButton).toBeDefined();
     expect(login.props.loginHandler).toBeDefined();
     TestUtils.Simulate.click(loginButton.getDOMNode());
-    expect(dummyCallback).toBeCalled();
+    expect(dummyLoginCallback).toBeCalled();
+  });
+
+  it('should call this.props.registerHandler when the create account button is clicked', () => {
+    expect(registerButton).toBeDefined();
+    expect(login.props.registerHandler).toBeDefined();
+    TestUtils.Simulate.click(registerButton.getDOMNode());
+    expect(dummyRegisterCallback).toBeCalled();
   });
 });
 

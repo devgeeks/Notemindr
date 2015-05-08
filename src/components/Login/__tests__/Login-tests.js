@@ -14,12 +14,18 @@ describe('Login default', () => {
   var login,
       loginComponent,
       loginChildren,
-      loginForm;
+      loginForm,
+      dummyLoginCallback,
+      dummyRegisterCallback;
 
   beforeEach(() => {
     //Render the component
+    dummyLoginCallback = jest.genMockFunction();
+    dummyRegisterCallback = jest.genMockFunction();
     login = TestUtils.renderIntoDocument(
-      <Login pending={false} appName='Notemindr' />
+      <Login pending={false} appName='Notemindr'
+          loginHandler={dummyLoginCallback}
+          registerHandler={dummyRegisterCallback} />
     );
     loginComponent = TestUtils.findRenderedDOMComponentWithClass(login, 'login');
     loginChildren = loginComponent.props.children;
@@ -80,11 +86,13 @@ describe('Login default', () => {
     expect(greatGrandChildren.length).toBe(2);
     expect(greatGrandChildren[0]._store.props).toEqual({
       className: 'button submit colored loginform',
+      onClick: dummyLoginCallback,
       tabIndex: '3',
       children: 'Login'
     });
     expect(greatGrandChildren[1]._store.props).toEqual({
       className: 'button create loginform',
+      onClick: dummyRegisterCallback,
       tabIndex: '4',
       children: 'Create Account'
     });

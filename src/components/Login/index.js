@@ -18,10 +18,10 @@ var Login = React.createClass({
 
   propTypes: {
     appName: React.PropTypes.string,
-    dismissed: React.PropTypes.boolean,
-    loginHandler: React.PropTypes.function,
-    pending: React.PropTypes.boolean,
-    registerHandler: React.PropTypes.function
+    dismissed: React.PropTypes.bool,
+    loginHandler: React.PropTypes.func,
+    pending: React.PropTypes.bool,
+    registerHandler: React.PropTypes.func
   },
 
   render: function() {

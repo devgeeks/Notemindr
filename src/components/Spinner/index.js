@@ -17,10 +17,10 @@ var Spinner = React.createClass({
   },
 
   propTypes: {
-    dark: React.PropTypes.boolean,
+    dark: React.PropTypes.bool,
     height: React.PropTypes.string,
-    inline: React.PropTypes.boolean,
-    pending: React.PropTypes.boolean,
+    inline: React.PropTypes.bool,
+    pending: React.PropTypes.bool,
     width: React.PropTypes.string
   },
 
