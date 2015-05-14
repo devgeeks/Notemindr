@@ -1,15 +1,16 @@
 'use strict';
 
- var React = require('react');
+var React = require('react');
 
- var Header = React.createClass({
+require('./index.less');
 
-   render: function() {
-     return (
+var Header = React.createClass({
+
+  render: function() {
+    return (
       <header className='header' />
-     );
-   }
+    );
+  }
+});
 
- });
-
- module.exports = Header;
+module.exports = Header;

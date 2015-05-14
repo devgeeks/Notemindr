@@ -4,6 +4,8 @@ var React = require('react');
 
 var Spinner = require('../Spinner');
 
+require('./index.less');
+
 var Login = React.createClass({
 
   getDefaultProps: function() {
@@ -44,9 +46,10 @@ var Login = React.createClass({
           <Spinner dark={false} pending={this.props.pending} />
           <input id='username' className={subClasses} type='text'
               name='username' autoCorrect='off' autoCapitalize='off'
-              placeholder='Username' tabIndex='1' />
+              placeholder='Username' tabIndex='1' ref='username' />
           <input id='passphrase' className={subClasses} type='password'
-              name='passphrase' placeholder='Passphrase' tabIndex='2' />
+              name='passphrase' placeholder='Passphrase' tabIndex='2'
+              ref='passphrase' />
           <div className='buttons' id='login-buttons'>
             <a className={'button submit colored ' + subClasses}
                 onClick={this.props.loginHandler} tabIndex='3'>Login</a>

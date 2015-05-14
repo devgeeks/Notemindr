@@ -3,6 +3,8 @@
 var React = require('react/addons');
 var PureRenderMixin = React.PureRenderMixin;
 
+require('./index.less');
+
 var Spinner = React.createClass({
   mixins: [PureRenderMixin],
 

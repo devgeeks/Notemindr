@@ -1,14 +1,17 @@
+'use strict';
+
 var React = require('react/addons');
 
 var App = require('./components/App');
-var Login = require('./components/Login');
 var ItemList = require('./components/ItemList');
 var ItemDetail = require('./components/ItemDetail');
 var Router = require('react-router');
 var {Route, DefaultRoute} = Router;
 
-var attachFastClick = require('fastclick');
-attachFastClick(document.body);
+var FastClick = require('fastclick');
+FastClick.attach(document.body);
+
+require('./app.less');
 
 var routes = (
   <Route name="app" path="/" handler={App}>

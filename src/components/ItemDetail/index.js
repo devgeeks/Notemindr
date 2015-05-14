@@ -2,6 +2,8 @@
 
 var React = require('react');
 
+require('./index.less');
+
 var ItemDetail = React.createClass({
 
   render: function() {
