@@ -11,6 +11,10 @@ var {Route, DefaultRoute} = Router;
 var FastClick = require('fastclick');
 FastClick.attach(document.body);
 
+// @TODO - remove in production
+var a11y = require('react-a11y');
+a11y(React);
+
 require('./app.less');
 
 var routes = (

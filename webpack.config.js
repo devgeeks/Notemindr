@@ -17,7 +17,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", lessLoaders.join('!')),
         exclude: /less_includes/
       },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?stage=1'}
     ]
   },
   plugins: [

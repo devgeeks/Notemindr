@@ -9,6 +9,9 @@ var {RouteHandler} = Router;
 // Modified version of Khan TimeoutTransitionGroup
 var TimeoutTransitionGroup = require('timeout-transition-group');
 
+var SessionStore = require('../../stores/SessionStore');
+var sessionActions = require('../../actions/sessionActionCreators');
+
 require('./index.less');
 
 var Header = require('../Header');
@@ -18,10 +21,29 @@ var App = React.createClass({
   mixins: [Router.State, Router.Navigation],
 
   getInitialState: function() {
+    let sessionState = SessionStore.getState();
     return {
-      pending: false,
-      dismissed: false
+      pending: sessionState.pending,
+      dismissed: !!sessionState.session,
+      sessionState: sessionState.session
     };
+  },
+
+  componentDidMount: function() {
+    SessionStore.on('change', this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    SessionStore.removeListener('change', this._onChange);
+  },
+
+  _onChange: function() {
+    let sessionState = SessionStore.getState();
+    this.setState({
+      sessionState: sessionState,
+      pending: sessionState.pending,
+      dismissed: !!sessionState.session
+    });
   },
 
   loginHandler: function(event) {
@@ -44,21 +66,9 @@ var App = React.createClass({
       }, 2000);
       return;
     }
-    this.setState({ pending: true });
-
     // @TODO - This should all be handled in an Action Creator
-    window.crypton.authorize(username, passphrase, (session, err) => {
-      if (err) {
-        // @TODO - handle error here
-        this.setState({ pending: false });
-        return;
-      }
-      // @TODO - write the session to the AccountStore
-      this.setState({
-        pending: false,
-        dismissed: true
-      });
-    });
+    // @TODO - including setting the state of pending
+    sessionActions.login(username, passphrase);
   },
 
   render: function() {

@@ -3,6 +3,7 @@
 var keyMirror = require('react/lib/keyMirror');
 
 module.exports = keyMirror({
+  CHANGE_EVENT: null,     // Generic store change event
   PENDING_SESSION: null,  // An async session operation is pending
   LOGIN: null,            // Log in using crypton.authorize()
   LOGOUT: null,           // Log out from crypton session
