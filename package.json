@@ -54,6 +54,7 @@
       "es6"
     ],
     "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/tinyvents",
       "<rootDir>/node_modules/timeout-transition-group",
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-tools"

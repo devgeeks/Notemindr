@@ -6,17 +6,25 @@ jest.dontMock('../../../utils/TestContext');
 jest.dontMock('../index.js');
 
 var testContext = require('../../../utils/TestContext');
+
 var React = require('react/addons');
 var {TestUtils} = React.addons;
+var TimeoutTransitionGroup = require('timeout-transition-group');
+
 var App = require('../index.js');
 var Login = require('../../Login');
 var Header = require('../../Header');
-var TimeoutTransitionGroup = require('timeout-transition-group');
+var SessionStore = require('../../../stores/SessionStore');
 
 var app;
 
 describe('App', () => {
   beforeEach(() => {
+    SessionStore.getState.mockReturnValue({
+      session: null,
+      pending: false,
+      error: ''
+    });
     // Render the component
     app = testContext.getRouterComponent(App);
   });

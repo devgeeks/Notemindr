@@ -11,39 +11,40 @@ var TimeoutTransitionGroup = require('timeout-transition-group');
 
 var SessionStore = require('../../stores/SessionStore');
 var sessionActions = require('../../actions/sessionActionCreators');
+var constants = require('../../constants/appConstants');
 
 require('./index.less');
 
 var Header = require('../Header');
 var Login = require('../Login');
 
+
+function getSessionState() {
+  let sessionState = SessionStore.getState();
+  return {
+    dismissed: !!sessionState.session,
+    pending: sessionState.pending,
+    sessionState: sessionState.session
+  };
+}
+
 var App = React.createClass({
   mixins: [Router.State, Router.Navigation],
 
   getInitialState: function() {
-    let sessionState = SessionStore.getState();
-    return {
-      pending: sessionState.pending,
-      dismissed: !!sessionState.session,
-      sessionState: sessionState.session
-    };
+    return getSessionState();
   },
 
   componentDidMount: function() {
-    SessionStore.on('change', this._onChange);
+    SessionStore.on(constants.CHANGE_EVENT, this._onSessionStateChange);
   },
 
   componentWillUnmount: function() {
-    SessionStore.removeListener('change', this._onChange);
+    SessionStore.removeListener('change', this._onSessionStateChange);
   },
 
-  _onChange: function() {
-    let sessionState = SessionStore.getState();
-    this.setState({
-      sessionState: sessionState,
-      pending: sessionState.pending,
-      dismissed: !!sessionState.session
-    });
+  _onSessionStateChange: function() {
+    this.setState(getSessionState());
   },
 
   loginHandler: function(event) {
@@ -54,20 +55,10 @@ var App = React.createClass({
     let passphrase = login.refs.passphrase.getDOMNode().value.trim();
     // Bail when one is empty
     if (!username || !passphrase) {
-      // @TODO - add an error here instead of this stub
-      this.setState({
-        pending: true
-      });
-      setTimeout(() => {
-        this.setState({
-          pending: false,
-          dismissed: true
-        });
-      }, 2000);
+      // @TODO - handle errors in the UI
+      console.error('Missing username or passphrase');
       return;
     }
-    // @TODO - This should all be handled in an Action Creator
-    // @TODO - including setting the state of pending
     sessionActions.login(username, passphrase);
   },
 

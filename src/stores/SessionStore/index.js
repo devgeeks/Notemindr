@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-var constants = require('../../constants/appConstants.js');
+var __ = require('../../constants/appConstants.js');
 var dispatcher = require('../../dispatcher/appDispatcher.js');
 var Tinyvents = require('tinyvents');
 
@@ -21,15 +21,15 @@ var SessionStore = {
   },
 
   emitChange: function() {
-    this.trigger(constants.CHANGE_EVENT);
+    this.trigger(__.CHANGE_EVENT);
   },
 
   addChangeListener: function(callback) {
-    this.on(constants.CHANGE_EVENT, callback);
+    this.on(__.CHANGE_EVENT, callback);
   },
 
   removeChangeListener: function(callback) {
-    this.off(constants.CHANGE_EVENT, callback);
+    this.off(__.CHANGE_EVENT, callback);
   }
 };
 
@@ -40,33 +40,24 @@ SessionStore.dispatchToken = dispatcher.register((payload) => {
   var action = payload.type;
 
   switch(action) {
-    case constants.PENDING_SESSION:
-      console.log(payload);
+
+    case __.LOGIN:
+      let username = payload.username;
+      let passphrase = payload.passphrase;
       _state.pending = true;
-      _state.error = '';
+      cryptonAPI.login(username, passphrase);
       break;
 
-    case constants.LOGIN:
+    case __.SESSION_RESPONSE:
       console.log(payload);
-      dispatcher.dispatchAsync(
-        cryptonAPI.login(payload.username, payload.passphrase), {
-          request: constants.LOGIN,
-          success: constants.SESSION_RESPONSE,
-          failure: constants.SESSION_ERROR
-        });
-      break;
-
-    case constants.LOGOUT:
-      console.log(payload);
-      break;
-
-    case constants.SESSION_RESPONSE:
-      console.log(payload);
-      _state.session = payload.session;
       _state.pending = false;
       _state.error = payload.error || '';
-      // @TODO remove this once the app responds to errors
-      console.log(_state.error || 'success');
+      _state.session = payload.session || null;
+      break;
+
+    case __.LOGOUT:
+      console.log(payload);
+      _state.session = null;
       break;
 
     default:

@@ -2,18 +2,12 @@
 
 /* global crypton */
 
-//var appConstants = require('../constants/appConstants');
+var sessionActions = require('../actions/sessionActionCreators');
 
 module.exports = {
-  authorize: (username, passphrase) => {
-    crypton.authorize(username, passphrase, (err, session) => {
-      if (err) {
-        // @TODO - Call an ERROR ACTION
-        return;
-      }
-      // @TODO - Call a SUCCESS ACTION
-      console.log(session);
-      return;
+  login: (username, password) => {
+    crypton.authorize(username, password, (err, session) => {
+      sessionActions.sessionResponse(err, session);
     });
   }
 };
