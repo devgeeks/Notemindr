@@ -15,6 +15,7 @@ var App = require('../index.js');
 var Login = require('../../Login');
 var Header = require('../../Header');
 var SessionStore = require('../../../stores/SessionStore');
+var NoteStore = require('../../../stores/NoteStore');
 
 var app;
 
@@ -22,6 +23,15 @@ describe('App', () => {
   beforeEach(() => {
     SessionStore.getState.mockReturnValue({
       session: null,
+      pending: false,
+      error: ''
+    });
+    NoteStore.getState.mockReturnValue({
+      items: [
+        {id: 1, h1: 'A large heading', body: 'This is the body of a note...'},
+        {id: 2, h1: 'Big heading', h2: 'Small heading', body: 'A body'}
+      ],
+      item: {},
       pending: false,
       error: ''
     });

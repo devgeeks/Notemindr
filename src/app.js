@@ -21,6 +21,7 @@ var routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="item" path="/item/:item" handler={ItemDetail} />
     <Route path='/' handler={ItemList} />
+    <Route path='/items' handler={ItemList} />
     <DefaultRoute handler={ItemList} />
   </Route>
 );

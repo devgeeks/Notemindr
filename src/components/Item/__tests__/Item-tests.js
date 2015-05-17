@@ -9,21 +9,22 @@ var Item = require('../index.js');
 var {TestUtils} = React.addons;
 
 describe('Item', () => {
-  var item,
+  var itemComponent,
       itemElement;
 
   beforeEach(() => {
     //Render the component
-    item = TestUtils.renderIntoDocument(
-      <Item />
+    let item = {id: 2, h1: 'Big heading', h2: 'Small heading', body: 'A body'};
+    itemComponent = TestUtils.renderIntoDocument(
+      <Item item={item} key={item.id} />
     );
     itemElement =
-      TestUtils.findRenderedDOMComponentWithClass(item, 'item');
+      TestUtils.findRenderedDOMComponentWithClass(itemComponent, 'item');
   });
 
   it('should render', () => {
-    expect(item).toBeDefined();
-    expect(TestUtils.isCompositeComponentWithType(item, Item)).toBe(true);
+    expect(itemComponent).toBeDefined();
+    expect(TestUtils.isCompositeComponentWithType(itemComponent, Item)).toBe(true);
     expect(itemElement).toBeDefined();
   });
 });

@@ -1,12 +1,15 @@
 'use strict';
 
-var constants = require('../../constants/appConstants');
+var __ = require('../../constants/appConstants');
 var dispatcher = require('../../dispatcher/appDispatcher');
 
 var Tinyvents = require('tinyvents');
 
 var _state = {
-  notes: [],
+  notes: [
+    {id: 1, h1: 'A large heading', body: 'This is the body of a note...'},
+    {id: 2, h1: 'Big heading', h2: 'Small heading', body: 'A body'}
+  ],
   note: {},
   error: '',
   pending: false
@@ -19,23 +22,53 @@ var NoteStore = {
   },
 
   emitChange: function() {
-    this.trigger(constants.CHANGE_EVENT);
+    this.trigger(__.CHANGE_EVENT);
   },
 
   addChangeListener: function(callback) {
-    this.on(constants.CHANGE_EVENT, callback);
+    this.on(__.CHANGE_EVENT, callback);
   },
 
   removeChangeListener: function(callback) {
-    this.off(constants.CHANGE_EVENT, callback);
+    this.off(__.CHANGE_EVENT, callback);
   }
 };
 
 Tinyvents.mixin(NoteStore);
 
 NoteStore.dispatchToken = dispatcher.register((payload) => {
-  var action = payload.action;
-  console.log(action.type);
+
+  var action = payload.type;
+
+  switch(action) {
+
+    case __.GET_ALL_NOTES:
+      console.log(payload);
+      break;
+
+    case __.CREATE_NOTE:
+      console.log(payload);
+      break;
+
+    case __.GET_NOTE:
+      console.log(payload);
+      break;
+
+    case __.UPDATE_NOTE:
+      console.log(payload);
+      break;
+
+    case __.REMOVE_NOTE:
+      console.log(payload);
+      break;
+
+    default:
+      return true;
+  }
+
+  NoteStore.emitChange();
+
+  return true;
 });
 
 module.exports = NoteStore;

@@ -4,6 +4,12 @@ var constants = require('../constants/appConstants');
 var dispatcher = require('../dispatcher/appDispatcher');
 
 var NoteActionCreators = {
+  fetchAllForUser: (session) => {
+    dispatcher.dispatch({
+      type: constants.GET_ALL_NOTES,
+      session: session
+    });
+  },
   create: (note) => {
     dispatcher.dispatch({
       type: constants.CREATE_NOTE,

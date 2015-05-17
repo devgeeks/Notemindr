@@ -6,7 +6,6 @@ var dispatcher = require('../../dispatcher/appDispatcher.js');
 var Tinyvents = require('tinyvents');
 
 var cryptonAPI = require('../../utils/CryptonAPIUtils.js');
-//var sessionActions = require('../../actions/sessionActionCreators');
 
 var _state = {
   session: null,
