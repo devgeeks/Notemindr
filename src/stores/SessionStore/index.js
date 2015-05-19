@@ -48,7 +48,7 @@ SessionStore.dispatchToken = dispatcher.register((payload) => {
       break;
 
     case __.SESSION_RESPONSE:
-      console.log(payload);
+      console.log(payload, 'SessionStore::SESSION_RESPONSE');
       _state.pending = false;
       _state.error = payload.error || '';
       _state.session = payload.session || null;
