@@ -20,9 +20,7 @@ var ItemList = React.createClass({
       return <Item item={item} key={item.id} />;
     });
     return (
-      <div className='itemlist'>
-        <ul>{items}</ul>
-      </div>
+      <div className='itemlist'>{items}</div>
     );
   }
 

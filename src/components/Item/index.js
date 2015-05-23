@@ -12,9 +12,12 @@ var Item = React.createClass({
 
   render: function() {
     return (
-      <li key={this.props.item.id} className='item'>
-        {this.props.item.h1}
-      </li>
+      <div key={this.props.item.id} className='item'>
+        <a href='#' role='listitem'>
+          <div className='heading'>{this.props.item.h1}</div>
+          <div className='subheading'>{this.props.item.h2}</div>
+        </a>
+      </div>
     );
   }
 

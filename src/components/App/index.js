@@ -49,15 +49,11 @@ var App = React.createClass({
   },
 
   componentDidMount: function() {
-    //SessionStore.on(constants.CHANGE_EVENT, this._onSessionStateChange);
-    //NoteStore.on(constants.CHANGE_EVENT, this._onNoteStateChange);
     SessionStore.on(constants.CHANGE_EVENT, this._onStateChange);
     NoteStore.on(constants.CHANGE_EVENT, this._onStateChange);
   },
 
   componentWillUnmount: function() {
-    //SessionStore.removeListener(constants.CHANGE_EVENT, this._onSessionStateChange);
-    //NoteStore.removeListener(constants.CHANGE_EVENT, this._onNoteStateChange);
     SessionStore.removeListener(constants.CHANGE_EVENT, this._onStateChange);
     NoteStore.removeListener(constants.CHANGE_EVENT, this._onStateChange);
   },
@@ -68,25 +64,6 @@ var App = React.createClass({
       noteState: getNoteState()
     });
   },
-
-  //_onSessionStateChange: function() {
-    //if (getSessionState().session) {
-      //// @TODO - use an action creator to fetch all notes
-      //console.log('we have a session');
-      //noteActions.fetchAllForUser();
-    //}
-    //this.setState({
-      //sessionState: getSessionState(),
-      //noteState: getNoteState()
-    //});
-  //},
-
-  //_onNoteStateChange: function() {
-    //this.setState({
-      //sessionState: getSessionState(),
-      //noteState: getNoteState()
-    //});
-  //},
 
   loginHandler: function(event) {
     event.preventDefault();

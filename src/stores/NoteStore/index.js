@@ -68,7 +68,11 @@ NoteStore.dispatchToken = dispatcher.register((payload) => {
         // @TODO - remove placeholder data
         _state.notes = [
           {id: 1, h1: 'A large heading', body: 'This is the body of a note...'},
-          {id: 2, h1: 'Big heading', h2: 'Small heading', body: 'A body'}
+          {id: 2, h1: 'Big heading', h2: 'Small heading', body: 'A body'},
+          {id: 3, h1: 'Big heading', h2: 'Small heading', body: 'A body'},
+          {id: 4, h1: 'An interesting heading', body: 'A body'},
+          {id: 5, h1: 'Heading', body: 'A body'},
+          {id: 6, h1: 'Stupid heading', h2: 'Small heading', body: 'A body'}
         ];
         // Use the payload.session to fetch all notes from the CryptonAPIUtils
         // ...
