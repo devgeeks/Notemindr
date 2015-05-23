@@ -1,7 +1,7 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var lessLoaders = [
   "css-loader",
-  "autoprefixer-loader?browsers=last 2 version",
+  "autoprefixer-loader?browsers=last 3 version",
   "less-loader"
 ];
 module.exports = {

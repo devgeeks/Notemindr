@@ -2,9 +2,15 @@
 /*@import (reference) '../../less_includes/variables.less';*/
 
 .itemlist {
+  /* support older flex */
+  display: -webkit-box;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+  /* end */
   .positionAbsolute(55px,0,0,0);
   .scrollable();
-  padding: .1em;
+  padding: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

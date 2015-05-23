@@ -5,12 +5,10 @@
   .BoxShadowHelper(1);
   margin: 5px;
   padding: 0;
-  width: 310px;
   height: 100px;
   border-radius: 2px;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 130px;
+  -webkit-box-flex: 1;
+  flex: 1 0 130px;
 
   /*&:first-child {
     flex-basis: 300px;
@@ -28,12 +26,11 @@
     padding: 0 16px;
 
     .heading {
-      font-size: 120%;
       font-weight: 500;
     }
 
     .subheading {
-      font-size: 110%;
+      font-size: 90%;
       font-weight: 300;
     }
   }
