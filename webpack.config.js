@@ -10,6 +10,7 @@ module.exports = {
     path: __dirname,
     filename: "www/js/notemindr.js"
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {

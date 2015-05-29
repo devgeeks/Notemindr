@@ -13,6 +13,6 @@ module.exports = {
     console.log(username, passphrase);
     setTimeout(() => {
       sessionActions.sessionResponse(undefined, {});
-    }, 100);
+    }, 2000);
   }
 };
