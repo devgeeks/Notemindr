@@ -19,6 +19,7 @@ require('./index.less');
 
 var Header = require('../Header');
 var Login = require('../Login');
+var TransientDialog = require('../TransientDialog');
 
 function getSessionState() {
   let sessionState = SessionStore.getState();
@@ -44,7 +45,11 @@ var App = React.createClass({
   getInitialState: function() {
     return {
       sessionState: getSessionState(),
-      noteState: getNoteState()
+      noteState: getNoteState(),
+      transientDialog: {
+        message: '',
+        dismissed: true
+      }
     };
   },
 
@@ -75,6 +80,18 @@ var App = React.createClass({
     if (!username || !passphrase) {
       // @TODO - handle errors in the UI
       console.error('Missing username or passphrase');
+      let transientDialogState = {
+        message: 'Missing username or passphrase',
+        dismissed: false
+      };
+      this.setState({transientDialog: transientDialogState});
+      setTimeout(() => {
+        transientDialogState = {
+          message: '',
+          dismissed: true
+        };
+        this.setState({transientDialog: transientDialogState});
+      }, 2000);
       return;
     }
     sessionActions.login(username, passphrase);
@@ -83,6 +100,8 @@ var App = React.createClass({
   render: function() {
     return (
       <div className='app'>
+        <TransientDialog message={this.state.transientDialog.message}
+            dismissed={this.state.transientDialog.dismissed} />
         <Login dismissed={this.state.sessionState.dismissed}
             pending={this.state.sessionState.pending}
             appName='Notemindr' loginHandler={this.loginHandler}
