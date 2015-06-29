@@ -26,7 +26,8 @@ function getSessionState() {
   return {
     dismissed: !!sessionState.session,
     pending: sessionState.pending,
-    session: sessionState.session
+    session: sessionState.session,
+    error: sessionState.error
   };
 }
 
@@ -64,10 +65,29 @@ var App = React.createClass({
   },
 
   _onStateChange: function() {
+    let error = this.state.sessionState.error || this.state.noteState.error;
+    if (error) {
+      this.showTransientDialog(error);
+    }
     this.setState({
       sessionState: getSessionState(),
       noteState: getNoteState()
     });
+  },
+
+  showTransientDialog: function(message, timeout) {
+      let transientDialogState = {
+        message: message || 'Undefined error',
+        dismissed: false
+      };
+      this.setState({transientDialog: transientDialogState});
+      setTimeout(() => {
+        transientDialogState = {
+          message: '',
+          dismissed: true
+        };
+        this.setState({transientDialog: transientDialogState});
+      }, timeout || 2000);
   },
 
   loginHandler: function(event) {
@@ -80,18 +100,7 @@ var App = React.createClass({
     if (!username || !passphrase) {
       // @TODO - handle errors in the UI
       console.error('Missing username or passphrase');
-      let transientDialogState = {
-        message: 'Missing username or passphrase',
-        dismissed: false
-      };
-      this.setState({transientDialog: transientDialogState});
-      setTimeout(() => {
-        transientDialogState = {
-          message: '',
-          dismissed: true
-        };
-        this.setState({transientDialog: transientDialogState});
-      }, 2000);
+      this.showTransientDialog('Missing username or passphrase');
       return;
     }
     sessionActions.login(username, passphrase);
