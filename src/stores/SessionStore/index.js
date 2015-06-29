@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-var __ = require('../../constants/appConstants.js');
+var constants = require('../../constants/appConstants.js');
 var dispatcher = require('../../dispatcher/appDispatcher.js');
 var { mixin } = require('tinyvents');
 
@@ -20,15 +20,15 @@ var SessionStore = {
   },
 
   emitChange: function() {
-    this.trigger(__.CHANGE_EVENT);
+    this.trigger(constants.CHANGE_EVENT);
   },
 
   addChangeListener: function(callback) {
-    this.on(__.CHANGE_EVENT, callback);
+    this.on(constants.CHANGE_EVENT, callback);
   },
 
   removeChangeListener: function(callback) {
-    this.off(__.CHANGE_EVENT, callback);
+    this.off(constants.CHANGE_EVENT, callback);
   }
 };
 
@@ -40,22 +40,24 @@ SessionStore.dispatchToken = dispatcher.register((payload) => {
 
   switch(action) {
 
-    case __.LOGIN:
+    case constants.LOGIN:
+      console.log(payload, 'SessionStore::LOGIN');
       let username = payload.username;
       let passphrase = payload.passphrase;
+      _state.error = '';
       _state.pending = true;
       cryptonAPI.login(username, passphrase);
       break;
 
-    case __.SESSION_RESPONSE:
+    case constants.SESSION_RESPONSE:
       console.log(payload, 'SessionStore::SESSION_RESPONSE');
       _state.pending = false;
       _state.error = payload.error || '';
       _state.session = payload.session || null;
       break;
 
-    case __.LOGOUT:
-      console.log(payload);
+    case constants.LOGOUT:
+      console.log(payload, 'SessionStore::LOGOUT');
       _state.session = null;
       break;
 

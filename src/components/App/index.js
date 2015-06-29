@@ -65,13 +65,15 @@ var App = React.createClass({
   },
 
   _onStateChange: function() {
-    let error = this.state.sessionState.error || this.state.noteState.error;
+    let sessionState = getSessionState();
+    let noteState = getNoteState();
+    let error = sessionState.error || noteState.error;
     if (error) {
       this.showTransientDialog(error);
     }
     this.setState({
-      sessionState: getSessionState(),
-      noteState: getNoteState()
+      sessionState: sessionState,
+      noteState: noteState
     });
   },
 

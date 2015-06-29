@@ -1,6 +1,6 @@
 'use strict';
 
-var __ = require('../../constants/appConstants');
+var constants = require('../../constants/appConstants');
 var dispatcher = require('../../dispatcher/appDispatcher');
 var SessionStore = require('../SessionStore');
 
@@ -20,15 +20,15 @@ var NoteStore = {
   },
 
   emitChange: function() {
-    this.trigger(__.CHANGE_EVENT);
+    this.trigger(constants.CHANGE_EVENT);
   },
 
   addChangeListener: function(callback) {
-    this.on(__.CHANGE_EVENT, callback);
+    this.on(constants.CHANGE_EVENT, callback);
   },
 
   removeChangeListener: function(callback) {
-    this.off(__.CHANGE_EVENT, callback);
+    this.off(constants.CHANGE_EVENT, callback);
   }
 };
 
@@ -40,27 +40,27 @@ NoteStore.dispatchToken = dispatcher.register((payload) => {
 
   switch(action) {
 
-    case __.GET_ALL_NOTES:
+    case constants.GET_ALL_NOTES:
       console.log(payload);
       break;
 
-    case __.CREATE_NOTE:
+    case constants.CREATE_NOTE:
       console.log(payload);
       break;
 
-    case __.GET_NOTE:
+    case constants.GET_NOTE:
       console.log(payload);
       break;
 
-    case __.UPDATE_NOTE:
+    case constants.UPDATE_NOTE:
       console.log(payload);
       break;
 
-    case __.REMOVE_NOTE:
+    case constants.REMOVE_NOTE:
       console.log(payload);
       break;
 
-    case __.SESSION_RESPONSE:
+    case constants.SESSION_RESPONSE:
       dispatcher.waitFor([SessionStore.dispatchToken]);
       console.log(payload, 'NoteStore::SESSION_RESPONSE');
       if (payload.session) {
