@@ -12,6 +12,7 @@ var {TestUtils} = React.addons;
 var TimeoutTransitionGroup = require('timeout-transition-group');
 
 var App = require('../index.js');
+var TransientDialog = require('../../TransientDialog');
 var Login = require('../../Login');
 var Header = require('../../Header');
 var SessionStore = require('../../../stores/SessionStore');
@@ -45,14 +46,15 @@ describe('App', () => {
     expect(app.getDOMNode().className).toContain('app');
   });
 
-  it('should have three (3) children', () => {
+  it('should have four (4) children', () => {
     var children = TestUtils.findRenderedDOMComponentWithClass(app, 'app')
       .props.children;
-    expect(app.getDOMNode().children.length).toBe(3);
-    expect(children.length).toBe(3);
-    expect(TestUtils.isElementOfType(children[0], Login)).toBe(true);
-    expect(TestUtils.isElementOfType(children[1], Header)).toBe(true);
-    expect(TestUtils.isElementOfType(children[2], TimeoutTransitionGroup))
+    expect(app.getDOMNode().children.length).toBe(4);
+    expect(children.length).toBe(4);
+    expect(TestUtils.isElementOfType(children[0], TransientDialog)).toBe(true);
+    expect(TestUtils.isElementOfType(children[1], Login)).toBe(true);
+    expect(TestUtils.isElementOfType(children[2], Header)).toBe(true);
+    expect(TestUtils.isElementOfType(children[3], TimeoutTransitionGroup))
       .toBe(true);
   });
 });

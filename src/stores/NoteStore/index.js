@@ -4,7 +4,7 @@ var __ = require('../../constants/appConstants');
 var dispatcher = require('../../dispatcher/appDispatcher');
 var SessionStore = require('../SessionStore');
 
-var Tinyvents = require('tinyvents');
+var { mixin } = require('tinyvents');
 
 var _state = {
   notes: [],
@@ -32,7 +32,7 @@ var NoteStore = {
   }
 };
 
-Tinyvents.mixin(NoteStore);
+mixin(NoteStore);
 
 NoteStore.dispatchToken = dispatcher.register((payload) => {
 

@@ -1,0 +1,19 @@
+@import (reference) '../../less_includes/mixins.less';
+@import (reference) '../../less_includes/colors.less';
+@import (reference) '../../less_includes/materialDesignShadowHelper.less';
+
+.transientdialog {
+  .positionAbsolute(0, 0, auto, 0);
+  .translate3d(0, 0, 0);
+  .BoxShadowHelper(1);
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  z-index: 1000;
+  background-color: @lightPrimaryColor;
+  transition: all .1s ease-out;
+
+  &.dismissed {
+    .translate3d(0, -100%, 0);
+  }
+}

@@ -3,7 +3,7 @@
 
 var __ = require('../../constants/appConstants.js');
 var dispatcher = require('../../dispatcher/appDispatcher.js');
-var Tinyvents = require('tinyvents');
+var { mixin } = require('tinyvents');
 
 var cryptonAPI = require('../../utils/CryptonAPIUtils.js');
 
@@ -32,7 +32,7 @@ var SessionStore = {
   }
 };
 
-Tinyvents.mixin(SessionStore);
+mixin(SessionStore);
 
 SessionStore.dispatchToken = dispatcher.register((payload) => {
 
