@@ -25,22 +25,4 @@
     // just darken instead of spinner etc
     background: #ccc;
   }
-
-  &.pagetransition-enter {
-    transform: translate(0, 10%);
-  }
-
-  &.pagetransition-enter.pagetransition-enter-active {
-    transform: translate(0, 0);
-    transition: all .2s ease-out;
-  }
-
-  &.pagetransition-leave {
-    transform: translate(0, 0);
-    transition: all .2s ease-in;
-  }
-
-  &.pagetransition-leave.pagetransition-leave-active {
-    transform: translate(0, 100%);
-  }
 }

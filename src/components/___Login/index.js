@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * KEEP THIS AROUND FOR REFERENCE
+ */
+
 var React = require('react');
 
 var Spinner = require('../Spinner');
