@@ -1,12 +1,12 @@
-'use strict';
+import React, { PureRenderMixin } from 'react';
+import classNames from 'classnames';
 
-var React = require('react/addons');
-var PureRenderMixin = React.PureRenderMixin;
+import './index.less';
 
-require('./index.less');
-
-var Spinner = React.createClass({
+export default React.createClass({
   mixins: [PureRenderMixin],
+
+  displayName: 'Spinner',
 
   getDefaultProps: function() {
     return {
@@ -27,21 +27,21 @@ var Spinner = React.createClass({
   },
 
   render: function() {
-    var cx = React.addons.classSet;
-    var classes = cx({
+    const { width, height, dark, pending, inline } = this.props;;
+    const classes = classNames({
       'spinnercontainer': true,
-      'pending': this.props.pending,
-      'dark': this.props.dark
+      'pending': pending,
+      'dark': dark
     });
 
-    var spinnerDivStyle = {
-      width: this.props.width,
-      display: (this.props.inline ? 'inline-' : '') + 'block'
+    const spinnerDivStyle = {
+      width: width,
+      display: (inline ? 'inline-' : '') + 'block'
     };
 
     return (
-      <div className={classes} style={spinnerDivStyle}>
-        <svg className='spinner' width={this.props.width} height={this.props.height}
+      <div className={ classes } style={ spinnerDivStyle }>
+        <svg className='spinner' width={ width } height={ height }
             viewBox='0 0 66 66' xmlns='http://www.w3.org/2000/svg'>
           <circle className='path' fill='none' strokeWidth='6'
             strokeLinecap='round' cx='33' cy='33' r='30'></circle>
@@ -52,4 +52,3 @@ var Spinner = React.createClass({
 
 });
 
-module.exports = Spinner;

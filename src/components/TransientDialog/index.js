@@ -1,10 +1,11 @@
-"use strict";
+import React from 'react';
+import classNames from 'classnames';
 
-var React = require('react');
+import './index.less';
 
-require('./index.less');
+export default React.createClass({
 
-var Dialog = React.createClass({
+  displayName: 'TransientDialog',
 
   propTypes: {
     dismissed: React.PropTypes.bool,
@@ -12,18 +13,17 @@ var Dialog = React.createClass({
   },
 
   render: function() {
-    var cx = React.addons.classSet;
-    var classes = cx({
+    const { dismissed, message } = this.props;
+    const classes = classNames({
       'transientdialog': true,
-      'dismissed': this.props.dismissed
+      'dismissed': dismissed
     });
     return (
-      <div className={classes}>
-        <div>{this.props.message}</div>
+      <div className={ classes }>
+        <div>{ message }</div>
       </div>
     );
   }
 
 });
 
-module.exports = Dialog;
