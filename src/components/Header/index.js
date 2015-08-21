@@ -1,10 +1,10 @@
-'use strict';
+import React from 'react';
 
-var React = require('react');
+import './index.less';
 
-require('./index.less');
+export default React.createClass({
 
-var Header = React.createClass({
+  displayName: 'Header',
 
   render: function() {
     return (
@@ -13,4 +13,3 @@ var Header = React.createClass({
   }
 });
 
-module.exports = Header;
