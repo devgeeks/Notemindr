@@ -1,0 +1,46 @@
+.login-controller-view {
+  // this should be a mixin...
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  overflow: hidden;
+  z-index: 1000; // login should cover (nearly) all...
+
+  // differentiating bg colour
+  background: #fff;
+
+  input {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /**
+   * The following styles are just examples to show
+   * how we could animate certain parts
+   */
+  &.pending {
+    // just darken instead of spinner etc
+    background: #ccc;
+  }
+
+  &.pagetransition-enter {
+    transform: translate(0, 10%);
+  }
+
+  &.pagetransition-enter.pagetransition-enter-active {
+    transform: translate(0, 0);
+    transition: all .2s ease-out;
+  }
+
+  &.pagetransition-leave {
+    transform: translate(0, 0);
+    transition: all .2s ease-in;
+  }
+
+  &.pagetransition-leave.pagetransition-leave-active {
+    transform: translate(0, 100%);
+  }
+}

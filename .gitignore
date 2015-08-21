@@ -1,8 +1,3 @@
-platforms/*
-plugins/*
 node_modules
-www/js/notemindr.js
-www/js/notemindr.js.map
-www/js/notemindr.min.js
-www/css/*
-desktopbuilds/*
+dist
+
