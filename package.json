@@ -7,7 +7,7 @@
     "start": "webpack && node server",
     "build-dev": "webpack --config webpack.dev.config.js",
     "build-prod": "webpack -p --config webpack.prod.config.js",
-    "test": "jest"
+    "test": ""
   },
   "author": "devgeeks <tommy@devgeeks.org> (http://devgeeks.org/)",
   "license": "MPLv2",
@@ -35,7 +35,6 @@
     "css-loader": "^0.15.6",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
-    "jest-cli": "^0.4.17",
     "node-sass": "^3.2.0",
     "react-hot-loader": "^1.2.8",
     "react-tools": "^0.13.3",
@@ -45,23 +44,5 @@
     "uglify-js": "^2.4.24",
     "webpack": "^1.10.5",
     "webpack-dev-server": "^1.10.1"
-  },
-  "jest": {
-    "testFileExtensions": [
-      "es6",
-      "js"
-    ],
-    "scriptPreprocessor": "<rootDir>/jest-script-preprocessor",
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "es6"
-    ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/tinyvents",
-      "<rootDir>/node_modules/timeout-transition-group",
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-tools"
-    ]
   }
 }
