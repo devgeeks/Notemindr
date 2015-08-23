@@ -27,13 +27,16 @@ export default React.createClass({
       'saving': savePending
     });
     // Break this into its own <EntryItem>
-    const emptyEntryContent = !loadPending ? 'Add some entries' : '';
+    const emptyEntryContent =
+      !loadPending
+        ? <span>No notes found.<br />Maybe you could add some now?</span>
+        : <span />;
     const entryItems = entries.length ? entries.map((entry) => {
       return <EntryListItem key={ entry.id } entry={ entry } />;
-    }) : <div>{ emptyEntryContent } </div>;
+    }) : <div className='empty-content'>{ emptyEntryContent } </div>;
     return (
       <div className={ classes }>
-        <div className='loading-message'>Loading...</div>
+        <div className='loading-message'>Loading notes...</div>
         <div>
           { entryItems }
         </div>

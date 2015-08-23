@@ -12,13 +12,16 @@ export default React.createClass({
 
   propTypes: {
     className: React.PropTypes.string,
+    pending: React.PropTypes.bool,
     submitHandler: React.PropTypes.func
   },
 
   render: function() {
     return (
       <div className={ this.props.className }>
+        <div className='blocker' />
         <form action='#' type='post' onSubmit={ this.props.submitHandler }>
+          <h2>Notemindr</h2>
           <div>
             <input id='username' type='text' name='username' autoCorrect='off'
                 autoCapitalize='off' placeholder='Username' tabIndex='1'
@@ -29,7 +32,7 @@ export default React.createClass({
                 placeholder='Passphrase' tabIndex='2' ref='passphrase'
                 aria-label='Passphrase' />
           </div>
-          <div>
+          <div className='buttons'>
             <input type='submit' value='Log in' tabIndex='3'
                 aria-label='Log in' />
           </div>

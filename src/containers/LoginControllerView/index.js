@@ -47,9 +47,10 @@ const LoginControllerView = React.createClass({
   },
 
   render: function() {
+    const { pending } = this.props;
     const classes = classNames({
-      'login-controller-view': true,
-      'pending': this.props.pending
+      'login': true,
+      'pending': pending
     });
     return (
       <LoginForm ref='loginForm' className={ classes }

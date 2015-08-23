@@ -6,6 +6,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import EntriesList from '../../components/EntriesList';
+import Header from '../../components/Header';
 import { loadIndex } from '../../actions/entryIndex';
 
 const EntriesControllerView = React.createClass({
@@ -35,10 +36,13 @@ const EntriesControllerView = React.createClass({
     }
     const { index, loadPending, savePending } = this.props;
     const { value } = index;
-    const entries = value.length ? value.sort(keysort('label')) : value;
+    const entries = value.length ? value.sort(keysort('label')) : [];
     return (
-      <EntriesList entries={ entries } loadPending={ loadPending }
-        savePending={ savePending } />
+      <div>
+        <Header />
+        <EntriesList entries={ entries } loadPending={ loadPending }
+          savePending={ savePending } />
+      </div>
     );
   }
 

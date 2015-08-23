@@ -2,24 +2,40 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+@import (reference) '../../less_includes/mixins.less';
+@import (reference) '../../less_includes/colors.less';
+@import (reference) '../../less_includes/materialDesignShadowHelper.less';
+
 .entries-list {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  .positionAbsolute(55px,0,0,0);
   overflow: hidden;
   background: #eee;
-  padding: 10px;
+  padding: 0;
 
   &.loading {
 
     .loading-message {
-      display: block;
+      opacity: 0.8;
+      transform: translate(0,0);
+      visibility: visible;
     }
   }
 
-  .loading-message{
-    display: none;
+  .loading-message {
+    .positionAbsolute(0,0,auto,0);
+    opacity: 0.01;
+    visibility: hidden;
+    background: @lightPrimaryColor;
+    padding: 4px 16px;
+    transform: translate(0,-100%);
+    transition: all 0.1s ease-in;
+  }
+
+  .empty-content {
+    .positionAbsolute();
+    color: @dividerColor;
+    font-size: 150%;
+    text-align: center;
+    padding: 55px;
   }
 }

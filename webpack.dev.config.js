@@ -26,7 +26,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.scss$/,
+        test: /\.less$/,
         loader: lessLoaders.join('!'),
         exclude: /less_includes/
       },

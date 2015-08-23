@@ -1,0 +1,79 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'react-router@master' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 warn package.json Notemindr@0.0.1 No repository field.
+5 warn package.json offline-js@0.7.11 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'react-router@master', null ]
+8 verbose cache add name=undefined spec="react-router@master" args=["react-router@master",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'react-router@master',
+9 verbose parsed url   path: 'react-router@master',
+9 verbose parsed url   href: 'react-router@master' }
+10 verbose cache add name="react-router" spec="master" args=["react-router","master"]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'master',
+11 verbose parsed url   path: 'master',
+11 verbose parsed url   href: 'master' }
+12 verbose addNamed [ 'react-router', 'master' ]
+13 verbose addNamed [ null, null ]
+14 silly lockFile 0848320d-react-router-master react-router@master
+15 verbose lock react-router@master /Users/tommy/.npm/0848320d-react-router-master.lock
+16 info addNameTag [ 'react-router', 'master' ]
+17 verbose request where is /react-router
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 54dd4a884a9c5d53
+20 verbose url raw /react-router
+21 verbose url resolving [ 'https://registry.npmjs.org/', './react-router' ]
+22 verbose url resolved https://registry.npmjs.org/react-router
+23 verbose request where is https://registry.npmjs.org/react-router
+24 info trying registry request attempt 1 at 08:34:17
+25 verbose etag "EY9MWNUG4QK150T1G5QSTG3SH"
+26 http GET https://registry.npmjs.org/react-router
+27 http 304 https://registry.npmjs.org/react-router
+28 silly registry.get cb [ 304,
+28 silly registry.get   { date: 'Sat, 22 Aug 2015 22:34:17 GMT',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     'cache-control': 'max-age=60',
+28 silly registry.get     etag: '"EY9MWNUG4QK150T1G5QSTG3SH"',
+28 silly registry.get     age: '0',
+28 silly registry.get     connection: 'keep-alive',
+28 silly registry.get     'x-served-by': 'cache-mel6521-MEL',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1440282857.886381,VS0,VE239',
+28 silly registry.get     vary: 'Accept' } ]
+29 verbose etag https://registry.npmjs.org/react-router from cache
+30 silly lockFile 0848320d-react-router-master react-router@master
+31 silly lockFile 0848320d-react-router-master react-router@master
+32 error notarget No compatible version found: react-router@'master'
+32 error notarget Valid install targets:
+32 error notarget ["0.0.0","0.0.1","0.4.0","0.4.1","0.4.2","0.5.0","0.5.1","0.5.2","0.5.3","0.6.0","0.6.1","0.7.0","0.8.0","0.9.0","0.9.1","0.9.2","0.9.3","0.9.4","0.9.5","0.10.0","0.10.1","0.10.2","0.11.0","0.11.1","0.11.2","0.11.3","0.11.4","0.11.5","0.11.6","0.12.0","0.12.1","0.12.2","0.12.3","0.12.4","0.13.0","0.13.1","0.13.2","0.13.3","1.0.0-alpha1","1.0.0-alpha2","1.0.0-beta1","1.0.0-beta2","1.0.0-beta3"]
+32 error notarget
+32 error notarget This is most likely not a problem with npm itself.
+32 error notarget In most cases you or one of your dependencies are requesting
+32 error notarget a package version that doesn't exist.
+33 error System Darwin 14.4.0
+34 error command "node" "/usr/local/bin/npm" "install" "react-router@master"
+35 error cwd /Users/tommy/src/devgeeks/Notemindr
+36 error node -v v0.10.33
+37 error npm -v 1.4.28
+38 error code ETARGET
+39 verbose exit [ 1, true ]

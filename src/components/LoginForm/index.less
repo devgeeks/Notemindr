@@ -2,31 +2,135 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-.login-controller-view {
+@import (reference) '../../less_includes/mixins.less';
+@import (reference) '../../less_includes/colors.less';
+@import (reference) '../../less_includes/materialDesignShadowHelper.less';
+
+.login {
   // this should be a mixin...
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  .positionAbsolute();
+  color: @textPrimaryColor;
+  background: @primaryColor;
   padding: 10px;
   overflow: hidden;
   z-index: 1000; // login should cover (nearly) all...
+  transform: translate(0,0);
 
-  // differentiating bg colour
-  background: #fff;
-
-  input {
-    width: 100%;
-    max-width: 320px;
+  .blocker {
+    .positionAbsolute();
+    display: none;
+    z-index: 1001;
+    background-color: rgba(0,0,0,0.3);
   }
 
-  /**
-   * The following styles are just examples to show
-   * how we could animate certain parts
-   */
+  form {
+    position: relative;
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    min-width: 270px;
+    margin: 0 10%;
+
+    input[type=text],
+    input[type=password] {
+      border-radius: 0;
+      width: 100%;
+      padding: 10px;
+      font-size: 100%;
+      outline: none;
+      border: none;
+      color: @textPrimaryColor;
+      height: 48px;
+      background-color: @primaryColor;
+      border-bottom: 1px solid @dividerColor;
+      transition: all .25s ease-in;
+    }
+
+    .buttons {
+      width: 100%;
+      padding: 0;
+      max-width: 400px;
+      margin: 16px 0;
+
+      input[type=submit] {
+        position: relative;
+        border-radius: 2px;
+        color: inherit;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        margin: 0 0 16px 0;
+        width: 100%;
+        min-width: 88px;
+        height: 38px;
+        line-height: 38px;
+        outline: none;
+        font-size: 100%;
+        padding: 0;
+        border: 1px solid @textPrimaryColor;
+        transition: all 0.05s ease-in;
+        background: @primaryColor;
+        color: @textPrimaryColor;
+        .BoxShadowHelper(1);
+
+        &.colored {
+          display: inline-block;
+          background: @darkPrimaryColor;
+          .BoxShadowHelper(1);
+
+          &:active {
+            background: lighten(@darkPrimaryColor, 5%);
+            .BoxShadowHelper(2);
+          }
+        }
+
+        &:active {
+          background: lighten(@primaryColor, 5%);
+          .BoxShadowHelper(2);
+          transform: translate3d(0,-1px,0);
+        }
+      }
+    }
+  }
+
+  ::-webkit-input-placeholder {
+    color: fade(@lightPrimaryColor, 50%);
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px @primaryColor inset;
+    -webkit-text-fill-color: @textPrimaryColor;
+  }
+
+  h2 {
+    color: @textPrimaryColor;
+    text-align: center;
+    margin: 20px 0;
+    letter-spacing: 2px;
+  }
+
   &.pending {
-    // just darken instead of spinner etc
-    background: #ccc;
+
+    .blocker {
+      display: block;
+    }
+  }
+
+  &.pagetransition-enter {
+    transform: translate(0, 10%);
+  }
+
+  &.pagetransition-enter.pagetransition-enter-active {
+    transform: translate(0, 0);
+    transition: all .25s ease-out;
+  }
+
+  &.pagetransition-leave {
+    transform: translate(0, 0);
+    transition: all .25s ease-in;
+  }
+
+  &.pagetransition-leave.pagetransition-leave-active {
+    transform: translate(0, 100%);
   }
 }
