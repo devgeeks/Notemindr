@@ -29,6 +29,8 @@ if (!__PRODUCTION__) {
   a11y(React, { filterFn: devToolsFailures, includeSrcNode: true });
 }
 
+document.addEventListener('touchstart', () => {}, false);
+
 React.render(
   <Root history={ history } />,
   document.getElementById('app')
