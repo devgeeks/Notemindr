@@ -54,7 +54,8 @@ const LoginControllerView = React.createClass({
     });
     return (
       <LoginForm ref='loginForm' className={ classes }
-          submitHandler={ this.handleSubmit } />
+          submitHandler={ this.handleSubmit }
+          pending={ pending } />
     );
   }
 

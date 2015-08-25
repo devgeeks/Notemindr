@@ -4,6 +4,8 @@
 
 import React from 'react';
 
+import Spinner from '../Spinner';
+
 import './index.less';
 
 export default React.createClass({
@@ -17,11 +19,13 @@ export default React.createClass({
   },
 
   render: function() {
+    const { className: classname, pending, submitHandler } = this.props;
     return (
-      <div className={ this.props.className }>
+      <div className={ classname }>
         <div className='blocker' />
-        <form action='#' type='post' onSubmit={ this.props.submitHandler }>
+        <form action='#' type='post' onSubmit={ submitHandler }>
           <h2>Notemindr</h2>
+          <Spinner dark={ false } pending={ pending } />
           <div>
             <input id='username' type='text' name='username' autoCorrect='off'
                 autoCapitalize='off' placeholder='Username' tabIndex='1'
