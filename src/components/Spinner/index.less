@@ -42,23 +42,15 @@
 
   @keyframes colors {
     0% {
-      stroke: @white;
-    }
-
-    25% {
       stroke: @lightPrimaryColor;
     }
 
     50% {
-      stroke: @primaryColor;
-    }
-
-    75% {
-      stroke: @lightPrimaryColor;
+      stroke: fade(@lightPrimaryColor, 50%);
     }
 
     100% {
-      stroke: @white;
+      stroke: @lightPrimaryColor;
     }
   }
 
@@ -68,7 +60,7 @@
     }
 
     50% {
-      stroke: @darkPrimaryColor;
+      stroke: fade(@superDarkPrimaryColor, 50%);
     }
 
     100% {
