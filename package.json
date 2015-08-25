@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack && node server",
     "build-dev": "webpack --config webpack.dev.config.js",
+    "build-mobile": "webpack --config webpack.mobiledev.config.js",
     "build-prod": "webpack -p --config webpack.prod.config.js",
     "test": ""
   },
