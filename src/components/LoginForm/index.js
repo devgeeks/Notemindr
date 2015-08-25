@@ -26,16 +26,12 @@ export default React.createClass({
         <form action='#' type='post' onSubmit={ submitHandler }>
           <h2>Notemindr</h2>
           <Spinner dark={ false } pending={ pending } />
-          <div>
-            <input id='username' type='text' name='username' autoCorrect='off'
-                autoCapitalize='off' placeholder='Username' tabIndex='1'
-                ref='username' aria-label='Username' />
-          </div>
-          <div>
-            <input id='passphrase' type='password' name='passphrase'
-                placeholder='Passphrase' tabIndex='2' ref='passphrase'
-                aria-label='Passphrase' />
-          </div>
+          <input id='username' type='text' name='username' autoCorrect='off'
+              autoCapitalize='off' placeholder='Username' tabIndex='1'
+              ref='username' aria-label='Username' />
+          <input id='passphrase' type='password' name='passphrase'
+              placeholder='Passphrase' tabIndex='2' ref='passphrase'
+              aria-label='Passphrase' />
           <div className='buttons'>
             <input type='submit' value='Log in' tabIndex='3'
                 aria-label='Log in' />
