@@ -33,7 +33,7 @@ export default React.createClass({
   render: function() {
     const { width, height, dark, pending, inline } = this.props;;
     const classes = classNames({
-      'spinnercontainer': true,
+      'spinner-container': true,
       'pending': pending,
       'dark': dark
     });
