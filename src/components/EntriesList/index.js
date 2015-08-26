@@ -29,15 +29,15 @@ export default React.createClass({
     // Break this into its own <EntryItem>
     const emptyEntryContent =
       !loadPending
-        ? <span>No notes found.<br />Maybe you could add some now?</span>
-        : <span />;
+        ? 'No notes found. Maybe you could add some now?'
+        : '';
     const entryItems = entries.length ? entries.map((entry) => {
       return <EntryListItem key={ entry.id } entry={ entry } />;
-    }) : <div className='empty-content'>{ emptyEntryContent } </div>;
+    }) : <div className='entry-content-empty'>{ emptyEntryContent } </div>;
     return (
       <div className={ classes }>
         <div className='loading-message'>Loading notes...</div>
-        <div>
+        <div className='entry-items-container'>
           { entryItems }
         </div>
       </div>
