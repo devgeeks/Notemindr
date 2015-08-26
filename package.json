@@ -8,7 +8,8 @@
     "build-dev": "webpack --config webpack.dev.config.js",
     "build-mobile": "webpack --config webpack.mobiledev.config.js",
     "build-prod": "webpack -p --config webpack.prod.config.js",
-    "test": "./node_modules/.bin/jest --verbose --coverage"
+    "test": "./node_modules/.bin/jest --verbose --coverage",
+    "watch:test": "nodemon -w __tests__ -w ./src -e js -x npm test"
   },
   "author": "devgeeks <tommy@devgeeks.org> (http://devgeeks.org/)",
   "license": "MPLv2",
@@ -31,17 +32,18 @@
     "babel-jest": "^5.3.0",
     "babel-loader": "^5.3.2",
     "babel-runtime": "^5.8.20",
-    "jest": "^0.1.40",
-    "jest-cli": "^0.5.0",
     "css-loader": "^0.15.6",
     "expect": "^1.9.0",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
+    "jest": "^0.1.40",
+    "jest-cli": "^0.5.0",
+    "less-loader": "^2.2.0",
     "node-sass": "^3.2.0",
+    "nodemon": "^1.4.1",
     "react-hot-loader": "^1.2.8",
     "react-tools": "^0.13.3",
     "redux-devtools": "^1.0.2",
-    "less-loader": "^2.2.0",
     "style-loader": "^0.12.3",
     "uglify-js": "^2.4.24",
     "webpack": "^1.10.5",
@@ -64,6 +66,8 @@
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-tools"
     ],
-    "modulePathIgnorePatterns": ["/node_modules/"]
+    "modulePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
