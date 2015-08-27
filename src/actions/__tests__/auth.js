@@ -88,9 +88,18 @@ describe('auth actions', () => {
       expect(shouldAuth(store.dispatch)).toBe(false);
     });
 
+    it('should poke the login function, even though it is kinda pointless', () => {
+      expectedState = {
+        account: null,
+        error: null,
+        pending: true
+      }
+      store.dispatch(authActions.login('testytesttest', 'testytesttest'));
+    });
+
     afterEach(() => {
       unsubscribe();
-      authActions.shouldAuthenticate.restore();
+      if (authActions.shouldAuthenticate.restore) authActions.shouldAuthenticate.restore();
     });
   });
 
