@@ -2,8 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-crypton.host = __CRYPTON_HOST__;
-crypton.port = __CRYPTON_PORT__;
+if (window && window.crypton) {
+  crypton.host = __CRYPTON_HOST__;
+  crypton.port = __CRYPTON_PORT__;
+}
 
 export let cryptonSession = null;
 

@@ -44,6 +44,7 @@
     "react-hot-loader": "^1.2.8",
     "react-tools": "^0.13.3",
     "redux-devtools": "^1.0.2",
+    "sinon": "^1.16.1",
     "style-loader": "^0.12.3",
     "uglify-js": "^2.4.24",
     "webpack": "^1.10.5",
@@ -63,8 +64,12 @@
       "<rootDir>/node_modules/timeout-transition-group",
       "<rootDir>/node_modules/expect",
       "<rootDir>/node_modules/classnames",
+      "<rootDir>/node_modules/sinon",
+      "<rootDir>/node_modules/redux",
+      "<rootDir>/node_modules/redux-thunk",
       "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-tools"
+      "<rootDir>/node_modules/react-tools",
+      "<rootDir>/node_modules/react-devtools"
     ],
     "modulePathIgnorePatterns": [
       "/node_modules/"

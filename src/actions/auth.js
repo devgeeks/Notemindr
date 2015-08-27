@@ -2,20 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import cryptonAPI from '../utils/CryptonAPI'
+import cryptonAPI from '../utils/CryptonAPI';
 
 export const LOGIN_PENDING = 'LOGIN_PENDING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT =  'LOGOUT';
 
-function shouldAuthenticate(state, username, passphrase) {
+// Most of these functions are only exported so they can be tested :/
+export function shouldAuthenticate(state, username, passphrase) {
   return (dispatch) => {
     if (!username || !passphrase) {
       return dispatch(authenticationFailed('No username or passphrase supplied'));
     }
-    const { account } = state.auth;
-    const { pending } = account;
+    const { pending } = state.auth;
     if (pending) {
       return false;
     }
@@ -23,27 +23,27 @@ function shouldAuthenticate(state, username, passphrase) {
   };
 }
 
-function requestAuthentication() {
+export function requestAuthentication() {
   return {
     type: LOGIN_PENDING
   }
 }
 
-function authenticationSucceeded(account) {
+export function authenticationSucceeded(account) {
   return {
     type: LOGIN_SUCCESS,
     account
   };
 }
 
-function authenticationFailed(error) {
+export function authenticationFailed(error) {
   return {
     type: LOGIN_FAIL,
     error
   }
 }
 
-function authenticateSession(username, passphrase) {
+export function authenticateSession(username, passphrase) {
   return (dispatch) => {
     dispatch(requestAuthentication(username));
     return cryptonAPI.login(username, passphrase)
@@ -56,7 +56,7 @@ function authenticateSession(username, passphrase) {
   };
 }
 
-function deauthenticateSession(state) {
+export function deauthenticateSession(state) {
   return (dispatch) => {
     const { auth } = state;
     const { account } = auth;
@@ -71,10 +71,11 @@ function deauthenticateSession(state) {
           dispatch(authenticationFailed(err));
         });
     }
+    return false;
   };
 }
 
-function deauthenticatedSession(account) {
+export function deauthenticatedSession(account) {
   return {
     type: LOGOUT,
     account
