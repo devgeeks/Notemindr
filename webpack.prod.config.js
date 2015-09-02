@@ -7,6 +7,9 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var definePlugin = new webpack.DefinePlugin({
+  'process.env': {
+    'NODE_ENV': '"' + process.env.NODE_ENV + '"' || '"development"'
+  },
   __PRODUCTION__: 'true',
   __CRYPTON_HOST__: '"encryptrservice.crypton.io"',
   __CRYPTON_PORT__: '443'
