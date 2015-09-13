@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import React from 'react';
-import { history } from 'react-router/lib/HashHistory';
+import createHashHistory from 'history/lib/createHashHistory';
 
 import Root from './containers/Root';
 
@@ -28,6 +28,8 @@ if (!__PRODUCTION__) {
   };
   a11y(React, { filterFn: devToolsFailures, includeSrcNode: true });
 }
+
+let history = createHashHistory();
 
 document.addEventListener('touchstart', () => {}, false);
 

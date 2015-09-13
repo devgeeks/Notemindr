@@ -37,6 +37,7 @@ export default React.createClass({
               <Route component={ App }>
                 <Route path='login' component={ LoginControllerView } />
                 <Route path='entries' component={ EntriesControllerView } />
+                <Route path='*' component={ LoginControllerView }/>
                 <Redirect from='/' to='/login' />
               </Route>
             </Router>

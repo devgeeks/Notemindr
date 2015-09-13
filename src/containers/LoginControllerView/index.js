@@ -16,29 +16,27 @@ const LoginControllerView = React.createClass({
   propTypes: {
     account: React.PropTypes.object,
     dispatch: React.PropTypes.func,
+    history: React.PropTypes.object,
     pending: React.PropTypes.bool
   },
 
-  contextTypes: {
-    router: React.PropTypes.object
-  },
-
   componentWillReceiveProps: function(nextProps) {
+    const { history } = this.props;
     const { account, pending, error } = nextProps;
     if (account && !pending) {
-      this.context.router.transitionTo('entries', null, { account: account });
+      history.pushState(null, '/entries');
       return;
     }
     if (error) {
-      // @TODO Handle error
-      console.log(error);
+      // @TODO Display error
+      alert(error);
     }
   },
 
   handleSubmit: function(e) {
     const { dispatch } = this.props;
     e.preventDefault();
-    console.log('submitting...');
+    console.log('submitting credentials for login...');
     //this.setState({ pending: true });
     let loginForm = this.refs.loginForm;
     let username = loginForm.refs.username.getDOMNode().value.trim();
